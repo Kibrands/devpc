@@ -45,3 +45,7 @@
 #avisoLegal {
     color: rgb(0, 161, 224);
 }
+
+a:hover {
+    text-decoration: none !important;
+}

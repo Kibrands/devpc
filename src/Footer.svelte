@@ -1,6 +1,10 @@
 <script>
 </script>
 
+<style>
+
+</style>
+
 <div class="modal fade" id="legalAdvice" tabindex="-1" role="dialog" aria-labelledby="legalAdvice"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -12,7 +16,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img src="img/logo.png" width="150" class="float-left" alt="Logo DevPC">
+                    <img src="img/logo.png" width="80" class="float-left" alt="Logo DevPC">
                     <p class="text-right">
                         <b id="legalAdviceContact"></b>
                     </p>
@@ -27,7 +31,7 @@
 </div>
 <footer
   class="footer w-100 card-footer text-center pb-2 px-5 text-white bg-dark">
-  <img src="img/logo.png" width="90" class="float-left" alt="Logo DevPC" />
+  <img src="img/logo.png" width="50" class="float-left" alt="Logo DevPC" />
   DevPC 2020 &copy; |
   <a href="#footer" data-toggle="modal" data-target="#legalAdvice" id="avisoLegal">
     Aviso Legal y Pol&iacute;tica de Privacidad
