@@ -1,4 +1,5 @@
 <script>
+import { Link } from "svelte-routing";
 </script>
 
 <style>
@@ -16,7 +17,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img src="img/logo.png" width="80" class="float-left" alt="Logo DevPC">
+                    <img src="img/favicon.png" width="80" class="float-left" alt="Logo DevPC">
                     <p class="text-right">
                         <b id="legalAdviceContact"></b>
                     </p>
@@ -30,10 +31,15 @@
         </div>
 </div>
 <footer
-  class="footer w-100 card-footer text-center pb-2 px-5 text-white bg-dark">
-  <img src="img/logo.png" width="50" class="float-left" alt="Logo DevPC" />
-  DevPC 2020 &copy; |
-  <a href="#footer" data-toggle="modal" data-target="#legalAdvice" id="avisoLegal">
+    class="footer w-100 card-footer text-center py-0 px-5 text-white">
+    <img src="img/logo-transparente.png" width="100" class="float-left" alt="Logo DevPC" />
+    DevPC 2020 &copy; |
+    <a href="#footer" data-toggle="modal" data-target="#legalAdvice" id="avisoLegal">
     Aviso Legal y Pol&iacute;tica de Privacidad
-  </a>
+    </a>
+    <Link to="/contact">
+        <div class="nav-item nav-link" style="color: white">
+            <i class="fas fa-headset"></i>&nbsp;Contacto
+        </div>
+    </Link>
 </footer>

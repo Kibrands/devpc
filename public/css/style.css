@@ -49,3 +49,33 @@
 a:hover {
     text-decoration: none !important;
 }
+
+.myLine {
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(180deg, #154854, rgba(46, 115, 131, 0.651)) !important;
+}
+
+footer {
+    background: #154854 !important;
+}
+
+.breadcrumb {
+    background: linear-gradient(180deg, #1d6272, rgba(62, 156, 177, 0.651)) !important;
+}
+
+.breadcrumb-item a {
+    color: white !important;
+}
+
+.breadcrumb li {
+    color: white !important;
+}
+
+body {
+    background-color: rgb(236, 236, 236) !important;
+}
+
+.logo {
+    filter: invert(75%);
+}
