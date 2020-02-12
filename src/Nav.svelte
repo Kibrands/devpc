@@ -27,29 +27,23 @@
     <div class="float-left align-items-center ml-2">
         <div class="btn btn-dark"><i class="fas fa-bars"></i></div>
     </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="form-inline mt-2 mt-md-0">
+    <div class="form-inline mt-0 mt-md-0">
             
             {#if user.loggedIn}
             <div style="visibility: {visibility}">
             Carrito
             </div>
-            <button class="btn btn-outline-dark my-2 ml-2 my-sm-0" id="logIn"
+            <button class="btn btn-outline-dark my-0 ml-2 my-sm-0" id="logIn"
                  on:click={toggle}>
                 Log out
             </button>
             {/if}
 
             {#if !user.loggedIn}
-            <button class="btn btn-outline-dark my-2 ml-2 my-sm-0" id="logIn"
+            <button class="btn btn-outline-dark my-0 ml-2 my-sm-0" id="logIn"
                  on:click={toggle}>
                 Log in
             </button>
             {/if}
-        </div>
     </div>
 </nav>
