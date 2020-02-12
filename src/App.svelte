@@ -6,10 +6,12 @@
 
   const URL = {
     users: "https://devpc.herokuapp.com/api/users/",
-    products: "https://devpc.herokuapp.com/api/products/",
+    products: "http://localhost:3000/api/products/",
     carts: "https://devpc.herokuapp.com/api/carts/",
     purchases: "https://devpc.herokuapp.com/api/purchases/"
   };
+
+  setContext("URL", URL);
 </script>
 
 <style>
