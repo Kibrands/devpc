@@ -18,32 +18,31 @@
 <header>
 <div class="myLine"><br /></div>
 </header>
-<nav class="navbar navbar-expand-lg navbar-light bg-light px-5 py-0">
+<nav class="navbar-light bg-light px-5 py-0">
     <Link to="/">
         <div class="navbar-brand py-0">
             <img class="float-left logo" src="img/logo-transparente.png" width="150" alt="devpc icon">
         </div>
     </Link>
-    <div class="float-left align-items-center ml-2">
-        <div class="btn btn-dark"><i class="fas fa-bars"></i></div>
-    </div>
-    <div class="form-inline mt-0 mt-md-0">
-            
-            {#if user.loggedIn}
-            <div style="visibility: {visibility}">
-            Carrito
-            </div>
-            <button class="btn btn-outline-dark my-0 ml-2 my-sm-0" id="logIn"
-                 on:click={toggle}>
-                Log out
-            </button>
-            {/if}
+    <div class="form-inline float-right mt-0 mt-md-0 pt-5">
+        {#if user.loggedIn}
+        <div style="visibility: {visibility}">
+        Carrito
+        </div>
+        <button class="btn btn-outline-dark my-0 ml-2 my-sm-0" id="logIn"
+                on:click={toggle}>
+            Log out
+        </button>
+        {/if}
 
-            {#if !user.loggedIn}
-            <button class="btn btn-outline-dark my-0 ml-2 my-sm-0" id="logIn"
-                 on:click={toggle}>
-                Log in
-            </button>
-            {/if}
+        {#if !user.loggedIn}
+        <button class="btn btn-outline-dark my-0 ml-2 my-sm-0" id="logIn"
+                on:click={toggle}>
+            Log in
+        </button>
+        {/if}
+    </div>
+    <div class="ml-2 float-right pt-5">
+        <div class="btn btn-dark"><i class="fas fa-bars"></i></div>
     </div>
 </nav>
