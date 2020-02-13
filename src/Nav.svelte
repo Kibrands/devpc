@@ -29,9 +29,6 @@
         </div>
     </Link>
     <div class="form-inline float-right mt-0 mt-md-0 pt-4">
-        <Link to="/register">
-            <div class="btn btn-primary pull-right">Registrarse</div>
-        </Link>
         {#if user.loggedIn}
         <div style="visibility: {visibility}">
         Carrito
@@ -43,6 +40,9 @@
         {/if}
 
         {#if !user.loggedIn}
+        <Link to="/register">
+            <div class="btn btn-primary pull-right">Registrarse</div>
+        </Link>
         <button class="btn btn-outline-dark my-0 ml-2 my-sm-0" id="logIn" data-toggle="modal" data-target="#myModal"
                 on:click={toggle}>
             Log in
