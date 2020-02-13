@@ -8,8 +8,11 @@
         user.loggedIn = !user.loggedIn;
         if (visibility == "hidden") visibility = "";
         else visibility = "hidden";
-	}
+    }
+
+    
 </script>
+
 
 <style>
 
@@ -43,36 +46,38 @@
         {/if}
     </div>
     <div class="ml-2 float-left pt-4">
-        <div class="btn btn-dark"><i class="fas fa-bars"></i></div>
+        <div class="btn btn-dark" id="menu-toggle"><i class="fas fa-bars"></i></div>
     </div>
+    <!-- MENU LATERAL -->
+    
     <!-- Modal HTML -->
-<div id="myModal" class="modal fade">
-	<div class="modal-dialog modal-login">
-		<div class="modal-content">
-				<div class="modal-header">				
-					<h4 class="modal-title">Iniciar sesión</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">				
-					<div class="form-group">
-						<label>Username</label>
-						<input type="text" class="form-control" required="required">
-					</div>
-					<div class="form-group">
-						<div class="clearfix">
-							<label>Password</label>
-							<a href="#" class="pull-right text-muted"><small>Forgot?</small></a>
-						</div>
-						
-						<input type="password" class="form-control" required="required">
-					</div>
-                <label class="checkbox-inline pull-left"><input type="checkbox"> Remember me</label>
-				</div>
-				<div class="modal-footer">
-					<input type="submit" class="btn btn-primary pull-right" value="Login">
-                    <input type="submit" class="btn btn-primary pull-right" value="Registrarse">
-				</div>
-		</div>
-	</div>
-</div>     
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content">
+                    <div class="modal-header">				
+                        <h4 class="modal-title">Iniciar sesión</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
+                            <div class="clearfix">
+                                <label>Password</label>
+                                <a href="#" class="pull-right text-muted"><small>Forgot?</small></a>
+                            </div>
+                            
+                            <input type="password" class="form-control" required="required">
+                        </div>
+                    <label class="checkbox-inline pull-left"><input type="checkbox"> Remember me</label>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary pull-right" value="Login">
+                        <input type="submit" class="btn btn-primary pull-right" value="Registrarse">
+                    </div>
+            </div>
+        </div>
+    </div>     
 </nav>

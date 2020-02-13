@@ -26,3 +26,4 @@ $(document).ready(function () {
     $('#legalAdviceContact').html(contact);
     $('#legalAdviceContent').html(aviso);
 });
+
