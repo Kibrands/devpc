@@ -43,8 +43,7 @@
         <Link to="/register">
             <div class="btn btn-primary pull-right">Registrarse</div>
         </Link>
-        <button class="btn btn-outline-dark my-0 ml-2 my-sm-0" id="logIn" data-toggle="modal" data-target="#myModal"
-                on:click={toggle}>
+        <button class="btn btn-outline-dark my-0 ml-2 my-sm-0" id="logIn" data-toggle="modal" data-target="#myModal">
             Log in
         </button>
         {/if}
@@ -55,9 +54,9 @@
     <!-- MENU LATERAL -->
     
     <!-- Modal HTML -->
-<div id="myModal" class="modal fade">
-	<div class="modal-dialog modal-login">
-		<div class="modal-content">
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content">
 				<div class="modal-header">				
 					<h4 class="modal-title">Iniciar sesión</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -78,9 +77,10 @@
                 <label class="checkbox-inline pull-left"><input type="checkbox"> Remember me</label>
 				</div>
 				<div class="modal-footer">
-					<input type="submit" class="btn btn-primary pull-right" value="Login">
+					<input type="submit" class="btn btn-primary pull-right" value="Login" on:click={toggle}
+                        data-dismiss="modal">
 				</div>
-		</div>
-	</div>
-</div>     
+            </div>
+        </div>
+    </div>     
 </nav>
