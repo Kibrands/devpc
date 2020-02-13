@@ -1,5 +1,6 @@
 <script>
     import { Link } from "svelte-routing";
+    import Button from './Button.svelte';
 
     let user = { loggedIn: false };
     let visibility = "hidden";
@@ -70,7 +71,9 @@
 				</div>
 				<div class="modal-footer">
 					<input type="submit" class="btn btn-primary pull-right" value="Login">
-                    <input type="submit" class="btn btn-primary pull-right" value="Registrarse">
+                    <Link to="/register">
+                        <div class="btn btn-primary pull-right">Registrarse</div>
+                    </Link>
 				</div>
 		</div>
 	</div>

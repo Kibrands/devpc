@@ -17,6 +17,10 @@
         handler = addToCart;
         classes = "btn btn-dark btn-addToCart";
         break;
+        case "register":
+          handler = regsiter;
+          classes = "btn btn-primary btn-register"
+          break;
       default:
     }
     switch (collection) {
@@ -39,11 +43,19 @@
   function addToCart() {
     console.log(document);
   }
+
+  function register() {
+    console.log(document);
+  }
 </script>
 
 <style>
-.btn-addToCart::after {
-    content: " Añadir al carrito";
+  .btn-addToCart::after {
+    content: "Añadir al carrito";
+  }
+
+  .btn-register::after {
+    content: "Registrarse";
   }
 </style>
 
