@@ -67,18 +67,18 @@
 					<div class="form-group">
 						<div class="clearfix">
 							<label>Password</label>
-							<a href="#" class="pull-right text-muted"><small>Forgot?</small></a>
+							<Link to="/forgot" class="pull-right text-muted"><small>Forgot?</small></Link>
 						</div>
 						
 						<input type="password" class="form-control" required="required">
 					</div>
                 <label class="checkbox-inline pull-left"><input type="checkbox"> Remember me</label>
 				</div>
+                <Link to="/register">
+                    <div class="btn btn-primary pull-right">Registrarse</div>
+                </Link>
 				<div class="modal-footer">
 					<input type="submit" class="btn btn-primary pull-right" value="Login">
-                    <Link to="/register">
-                        <div class="btn btn-primary pull-right">Registrarse</div>
-                    </Link>
 				</div>
 		</div>
 	</div>
