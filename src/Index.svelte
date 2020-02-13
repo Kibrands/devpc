@@ -17,8 +17,9 @@
     $jsonData = data;
   });
 
-   $: dataResponse = search 
-    ? $jsonData.filter(item => regex.test(item.nombre))
+  $: regex = new RegExp(search, "i");
+  $: dataResponse = search 
+    ? $jsonData.filter(item => regex.test(item.title))
     : $jsonData;
 </script>
 
@@ -28,12 +29,14 @@
   </ol>
 </nav>
 <div class="container">
-  <h2>Inicio</h2>
-  {#each dataResponse as product}
-    <Product {product}>
-      <div style="text-align: right">
-        <Button document={product} type="addToCart" collection="products" />
-      </div>
-    </Product>
-  {/each}
+  <Search bind:search />
+  <div class="row">
+    {#each dataResponse as product}
+      <Product {product}>
+        <div style="text-align: right">
+          <Button document={product} type="addToCart" collection="products" />
+        </div>
+      </Product>
+    {/each}
+  </div>
 </div>
