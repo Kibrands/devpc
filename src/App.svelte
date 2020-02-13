@@ -6,7 +6,7 @@
 
   const URL = {
     users: "https://devpc.herokuapp.com/api/users/",
-    products: "http://localhost:3000/api/products/",
+    products: "https://devpc.herokuapp.com/api/products/",
     carts: "https://devpc.herokuapp.com/api/carts/",
     purchases: "https://devpc.herokuapp.com/api/purchases/"
   };

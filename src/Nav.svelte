@@ -21,10 +21,10 @@
 <nav class="navbar-light bg-light px-5 py-0">
     <Link to="/">
         <div class="navbar-brand py-0">
-            <img class="float-left logo" src="img/logo-transparente.png" width="150" alt="devpc icon">
+            <img class="float-left logo" src="img/logo-transparente.png" width="90" alt="devpc icon">
         </div>
     </Link>
-    <div class="form-inline float-right mt-0 mt-md-0 pt-5">
+    <div class="form-inline float-right mt-0 mt-md-0 pt-4">
         {#if user.loggedIn}
         <div style="visibility: {visibility}">
         Carrito
@@ -36,13 +36,43 @@
         {/if}
 
         {#if !user.loggedIn}
-        <button class="btn btn-outline-dark my-0 ml-2 my-sm-0" id="logIn"
+        <button class="btn btn-outline-dark my-0 ml-2 my-sm-0" id="logIn" data-toggle="modal" data-target="#myModal"
                 on:click={toggle}>
             Log in
         </button>
         {/if}
     </div>
-    <div class="ml-2 float-right pt-5">
+    <div class="ml-2 float-left pt-4">
         <div class="btn btn-dark"><i class="fas fa-bars"></i></div>
     </div>
+    <!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+	<div class="modal-dialog modal-login">
+		<div class="modal-content">
+				<div class="modal-header">				
+					<h4 class="modal-title">Iniciar sesión</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">				
+					<div class="form-group">
+						<label>Username</label>
+						<input type="text" class="form-control" required="required">
+					</div>
+					<div class="form-group">
+						<div class="clearfix">
+							<label>Password</label>
+							<a href="#" class="pull-right text-muted"><small>Forgot?</small></a>
+						</div>
+						
+						<input type="password" class="form-control" required="required">
+					</div>
+                <label class="checkbox-inline pull-left"><input type="checkbox"> Remember me</label>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" class="btn btn-primary pull-right" value="Login">
+                    <input type="submit" class="btn btn-primary pull-right" value="Registrarse">
+				</div>
+		</div>
+	</div>
+</div>     
 </nav>

@@ -57,11 +57,11 @@ a:hover {
 }
 
 footer {
-    background: #154854 !important;
+    background:	#383838 !important;
 }
 
 .breadcrumb {
-    background: linear-gradient(180deg, #1d6272, rgba(62, 156, 177, 0.651)) !important;
+    background-color: #909090 !important;
 }
 
 .breadcrumb-item a {

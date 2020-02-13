@@ -32,7 +32,6 @@ import { Link } from "svelte-routing";
 </div>
 <footer
     class="footer w-100 card-footer text-center py-0 px-5 text-white">
-    <img src="img/logo-transparente.png" width="100" class="float-left" alt="Logo DevPC" />
     DevPC 2020 &copy; |
     <a href="#footer" data-toggle="modal" data-target="#legalAdvice" id="avisoLegal">
     Aviso Legal y Pol&iacute;tica de Privacidad
