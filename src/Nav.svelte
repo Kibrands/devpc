@@ -29,6 +29,9 @@
         </div>
     </Link>
     <div class="form-inline float-right mt-0 mt-md-0 pt-4">
+        <Link to="/register">
+            <div class="btn btn-primary pull-right">Registrarse</div>
+        </Link>
         {#if user.loggedIn}
         <div style="visibility: {visibility}">
         Carrito
@@ -74,9 +77,6 @@
 					</div>
                 <label class="checkbox-inline pull-left"><input type="checkbox"> Remember me</label>
 				</div>
-                <Link to="/register">
-                    <div class="btn btn-primary pull-right">Registrarse</div>
-                </Link>
 				<div class="modal-footer">
 					<input type="submit" class="btn btn-primary pull-right" value="Login">
 				</div>
