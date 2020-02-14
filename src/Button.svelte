@@ -1,11 +1,15 @@
 <script>
   import { onMount, getContext } from "svelte";
   import { jsonData } from "./store.js";
+  import { md5 } from "./md5.js";
 
   export let type = "addToCart";
   export let collection = "products";
   export let document = {};
 
+  const toggle = getContext("toggle");
+
+  let btnType = "";
   let handler = () => {};
   let classes = "";
   let url = "";
@@ -17,10 +21,15 @@
         handler = addToCart;
         classes = "btn btn-dark btn-addToCart";
         break;
-        case "register":
-          handler = regsiter;
-          classes = "btn btn-primary btn-register"
-          break;
+      case "register":
+        handler = register;
+        classes = "btn btn-primary btn-register";
+        btnType = "submit";
+        break;
+      case "login":
+        handler = login;
+        classes = "btn btn-primary pull-right btn-login";
+        break;
       default:
     }
     switch (collection) {
@@ -45,7 +54,47 @@
   }
 
   function register() {
-    console.log(document);
+    window.document
+      .getElementById("registerForm")
+      .addEventListener("click", function(event) {
+        event.preventDefault();
+      });
+    document.password = md5(document.password);
+    if (
+      Object.keys(document).length > 1 &&
+      Object.values(document).every(x => x !== undefined && x != "")
+    ) {
+      fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(document)
+      })
+        .then(res => res.json())
+        .then(data => {
+          $jsonData = [...$jsonData, data];
+          window.location.href = "/";
+        })
+        .catch(err => ko());
+    }
+  }
+
+  function login() {
+    console.log(document.nick);
+    fetch(URL.users + document.nick, {
+      method: "GET"
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (
+          data.nick == document.nick &&
+          data.password == md5(document.password)
+        ) {
+          toggle();
+        } else {
+          alert("Datos incorrectos");
+        }
+      })
+      .catch(err => console.log(err));
   }
 </script>
 
@@ -57,6 +106,10 @@
   .btn-register::after {
     content: "Registrarse";
   }
+
+  .btn-login::after {
+    content: "Login";
+  }
 </style>
 
-<button class={classes} on:click={handler} />
+<button type={btnType} class={classes} on:click={handler} />

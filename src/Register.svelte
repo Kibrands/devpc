@@ -1,6 +1,9 @@
 <script>
   import { Link } from "svelte-routing";
-  import { md5 } from './md5.js';
+  import User from './User.svelte';
+  import Button from './Button.svelte';
+
+  let user = {};
 </script>
 
 <nav aria-label="breadcrumb">
@@ -11,7 +14,9 @@
 </nav>
 <div class="container">
     <h2>Registro</h2>
-    <form>
-
-    </form>
+    <User bind:user>
+      <div style="text-align: right">
+        <Button document={user} type="register" collection="users" />
+      </div>
+    </User>
 </div>

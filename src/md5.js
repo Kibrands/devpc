@@ -1,4 +1,4 @@
-export const md5 = function(d) { result = M(V(Y(X(d), 8 * d.length))); return result.toLowerCase() };
+export const md5 = function(d) { let result = M(V(Y(X(d), 8 * d.length))); return result.toLowerCase() };
 
 function M(d) { for (var _, m = "0123456789ABCDEF", f = "", r = 0; r < d.length; r++) _ = d.charCodeAt(r), f += m.charAt(_ >>> 4 & 15) + m.charAt(15 & _); return f }
 
