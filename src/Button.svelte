@@ -15,6 +15,7 @@
   let url = "";
 
   const URL = getContext("URL");
+  const LOGIN_DATA = getContext("loginData");
   onMount(() => {
     switch (type) {
       case "addToCart":
@@ -79,6 +80,7 @@
   }
 
   function login() {
+    document = LOGIN_DATA;
     console.log(document.nick);
     fetch(URL.users + document.nick, {
       method: "GET"

@@ -1,5 +1,6 @@
 <script>
   import { Link } from "svelte-routing";
+  import { onMount, getContext } from "svelte";
   import Button from "./Button.svelte";
 
   let user = { loggedIn: false };
@@ -11,13 +12,14 @@
     else visibility = "hidden";
   }
 
-  let loginData;
+  let loginData = {};
 
   function getLoginData() {
     loginData.nick = window.document.getElementById("loginNick").value;
     loginData.password = window.document.getElementById("loginPassword").value;
     if (loginData.nick != "" && loginData.password != "") {
       console.log(loginData);
+      return loginData;
     } else {
       alert("ERROR");
     }
