@@ -7,15 +7,14 @@
   export let collection = "products";
   export let document = {};
 
-  const toggle = getContext("toggle");
-
   let btnType = "";
   let handler = () => {};
   let classes = "";
   let url = "";
 
+  let user = getContext("user");
+
   const URL = getContext("URL");
-  const LOGIN_DATA = getContext("loginData");
   onMount(() => {
     switch (type) {
       case "addToCart":
@@ -30,6 +29,10 @@
       case "login":
         handler = login;
         classes = "btn btn-primary pull-right btn-login";
+        break;
+      case "logout":
+        handler = logout;
+        classes = "btn btn-outline-dark my-0 ml-2 my-sm-0";
         break;
       default:
     }
@@ -80,8 +83,6 @@
   }
 
   function login() {
-    document = LOGIN_DATA;
-    console.log(document.nick);
     fetch(URL.users + document.nick, {
       method: "GET"
     })
@@ -91,12 +92,17 @@
           data.nick == document.nick &&
           data.password == md5(document.password)
         ) {
-          toggle();
+          console.log(document.nick + " Loged In");
+          user.loggedIn = true;
         } else {
           alert("Datos incorrectos");
         }
       })
       .catch(err => console.log(err));
+  }
+
+  function logout() {
+
   }
 </script>
 

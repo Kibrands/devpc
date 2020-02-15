@@ -3,8 +3,8 @@
   import { onMount, getContext } from "svelte";
   import Button from "./Button.svelte";
 
-  let user = { loggedIn: false };
   let visibility = "hidden";
+  let user = { loggedIn: false };
 
   function toggle() {
     user.loggedIn = !user.loggedIn;
@@ -48,6 +48,7 @@
   <div class="form-inline float-right mt-0 mt-md-0 pt-4">
     {#if user.loggedIn}
       <div style="visibility: {visibility}">Carrito</div>
+      <Button type="logout" collection="users" />
       <button
         class="btn btn-outline-dark my-0 ml-2 my-sm-0"
         id="logIn"
@@ -94,6 +95,7 @@
           <div class="form-group">
             <label>Username</label>
             <input
+              bind:value={loginData.nick}
               id="loginNick"
               type="text"
               class="form-control"
@@ -106,8 +108,8 @@
                 <small>Forgot?</small>
               </Link>
             </div>
-
             <input
+              bind:value={loginData.password}
               id="loginPassword"
               type="password"
               class="form-control"
