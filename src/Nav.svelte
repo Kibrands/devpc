@@ -2,6 +2,8 @@
   import { Link } from "svelte-routing";
   import { onMount, getContext } from "svelte";
   import Button from "./Button.svelte";
+  import Sidebar from './Sidebar.svelte';
+  let sidebar_show = false;
 
   let visibility = "hidden";
   let user = { loggedIn: false };
@@ -25,10 +27,6 @@
     }
   }
 </script>
-
-<style>
-
-</style>
 
 <header>
   <div class="myLine">
@@ -59,7 +57,7 @@
 
     {#if !user.loggedIn}
       <Link to="/register">
-        <div class="btn btn-primary pull-right">Registrarse</div>
+        <div class="btn btn-dark pull-right">Registrarse</div>
       </Link>
       <button
         class="btn btn-outline-dark my-0 ml-2 my-sm-0"
@@ -71,12 +69,11 @@
     {/if}
   </div>
   <div class="ml-2 float-left pt-4">
-    <div class="btn btn-dark" id="menu-toggle">
-      <i class="fas fa-bars" />
+    <div  id="menu-toggle">
+        <button on:click={() => sidebar_show = !sidebar_show} class="btn btn-dark"><i class="fas fa-bars" /></button>
+        <Sidebar bind:show={sidebar_show} />
     </div>
   </div>
-  <!-- MENU LATERAL -->
-
   <!-- Modal HTML -->
   <div id="myModal" class="modal fade">
     <div class="modal-dialog modal-login">
@@ -130,4 +127,5 @@
       </div>
     </div>
   </div>
+  
 </nav>

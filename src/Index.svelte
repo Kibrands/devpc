@@ -28,8 +28,10 @@
     <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-home"></i> Inicio</li>
   </ol>
 </nav>
+
 <div class="container">
   <Search bind:search />
+  
   <div class="row">
     {#each dataResponse as product}
       <Product {product}>
