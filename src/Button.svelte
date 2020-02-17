@@ -1,18 +1,29 @@
 <script>
-  import { onMount, getContext } from "svelte";
+  import { onMount, getContext, setContext } from "svelte";
+  import {writable} from 'svelte/store';
   import { jsonData } from "./store.js";
   import { md5 } from "./md5.js";
 
   export let type = "addToCart";
   export let collection = "products";
   export let document = {};
+  export let dataDismiss = "";
 
   let btnType = "";
   let handler = () => {};
   let classes = "";
   let url = "";
 
-  let user = getContext("user");
+  export let visibility = writable("hidden");
+  export let logged = writable(false);
+  setContext("logged", logged);
+  setContext("visibility", visibility);
+
+  function toggle() {
+    $logged = !$logged;
+    if ($visibility == "hidden") $visibility = "";
+    else $visibility = "hidden";
+  }
 
   const URL = getContext("URL");
   onMount(() => {
@@ -32,7 +43,7 @@
         break;
       case "logout":
         handler = logout;
-        classes = "btn btn-outline-dark my-0 ml-2 my-sm-0";
+        classes = "btn btn-outline-dark my-0 ml-2 my-sm-0 btn-logout";
         break;
       default:
     }
@@ -92,8 +103,7 @@
           data.nick == document.nick &&
           data.password == md5(document.password)
         ) {
-          console.log(document.nick + " Loged In");
-          user.loggedIn = true;
+          toggle();
         } else {
           alert("Datos incorrectos");
         }
@@ -102,7 +112,7 @@
   }
 
   function logout() {
-
+    toggle();
   }
 </script>
 
@@ -118,6 +128,14 @@
   .btn-login::after {
     content: "Login";
   }
+
+  .btn-logout::after {
+    content: "Logout";
+  }
 </style>
 
-<button type={btnType} class={classes} on:click={handler} />
+<button
+  data-dismiss={dataDismiss}
+  type={btnType}
+  class={classes}
+  on:click={handler} />

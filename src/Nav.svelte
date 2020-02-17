@@ -3,29 +3,13 @@
   import { onMount, getContext } from "svelte";
   import Button from "./Button.svelte";
   import Sidebar from './Sidebar.svelte';
+
   let sidebar_show = false;
 
-  let visibility = "hidden";
-  let user = { loggedIn: false };
-
-  function toggle() {
-    user.loggedIn = !user.loggedIn;
-    if (visibility == "hidden") visibility = "";
-    else visibility = "hidden";
-  }
+  let visibility = getContext("visibility");
+  let logged = getContext("logged");
 
   let loginData = {};
-
-  function getLoginData() {
-    loginData.nick = window.document.getElementById("loginNick").value;
-    loginData.password = window.document.getElementById("loginPassword").value;
-    if (loginData.nick != "" && loginData.password != "") {
-      console.log(loginData);
-      return loginData;
-    } else {
-      alert("ERROR");
-    }
-  }
 </script>
 
 <header>
@@ -44,18 +28,12 @@
     </div>
   </Link>
   <div class="form-inline float-right mt-0 mt-md-0 pt-4">
-    {#if user.loggedIn}
-      <div style="visibility: {visibility}">Carrito</div>
+    {#if $logged}
+      <div style="visibility: {$visibility}">Carrito</div>
       <Button type="logout" collection="users" />
-      <button
-        class="btn btn-outline-dark my-0 ml-2 my-sm-0"
-        id="logIn"
-        on:click={toggle}>
-        Log out
-      </button>
     {/if}
 
-    {#if !user.loggedIn}
+    {#if !$logged}
       <Link to="/register">
         <div class="btn btn-dark pull-right">Registrarse</div>
       </Link>
@@ -122,7 +100,7 @@
             document={loginData}
             type="login"
             collection="users"
-            data-dismiss="modal" />
+            dataDismiss="modal" />
         </div>
       </div>
     </div>
