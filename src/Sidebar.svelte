@@ -6,7 +6,7 @@
 
   export let show = false;
 
-  function setCategory(cat){
+  function setCategory(cat) {
     $category = cat;
   }
 </script>
@@ -14,10 +14,10 @@
 <style>
   nav {
     position: fixed;
-    top: 9.7rem;
+    top: 9.3rem;
     left: 0;
     height: 100%;
-    padding: 2rem 1rem 0.6rem;
+    padding: 1.5rem 1rem 0.6rem;
     border-right: 1px solid #aaa;
     background: #fff;
     overflow-y: auto;
@@ -34,6 +34,10 @@
 
   .dropdown-menu {
     margin-left: 10%;
+  }
+
+  .dropdown{
+    padding: 10px 0;
   }
 </style>
 
@@ -90,6 +94,10 @@
     <p>
       <i class="fas fa-mouse" />
       <a href="#peripheral">&nbsp;&nbsp;&nbsp;Periféricos</a>
+    </p>
+    <p>
+      <i class="fas fa-headset" />
+      <Link to="/contact">&nbsp;Contacto</Link>
     </p>
   </nav>
 {/if}

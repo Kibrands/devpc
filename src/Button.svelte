@@ -99,7 +99,7 @@
           data.password == md5(document.password)
         ) {
           $user = writable(data);
-          console.log(user);
+          console.log({user});
           
           toggle();
         } else {

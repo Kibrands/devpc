@@ -1,11 +1,10 @@
 <script>
-  import { Link } from "svelte-routing";
 </script>
 
 <style>
-    #footer {
-        z-index: 3;
-    }
+  #footer {
+    z-index: 3;
+  }
 </style>
 
 <div
@@ -47,7 +46,9 @@
     </div>
   </div>
 </div>
-<footer id="footer" class="footer w-100 card-footer text-center py-0 px-5 text-white">
+<footer
+  id="footer"
+  class="footer w-100 card-footer text-center py-0 pb-4 px-5 text-white">
   DevPC 2020 &copy; |
   <a
     href="#footer"
@@ -56,10 +57,4 @@
     id="avisoLegal">
     Aviso Legal y Pol&iacute;tica de Privacidad
   </a>
-  <Link to="/contact">
-    <div class="nav-item nav-link" style="color: white">
-      <i class="fas fa-headset" />
-      &nbsp;Contacto
-    </div>
-  </Link>
 </footer>

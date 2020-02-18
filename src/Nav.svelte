@@ -2,7 +2,7 @@
   import { Link } from "svelte-routing";
   import { onMount, getContext } from "svelte";
   import Button from "./Button.svelte";
-  import Sidebar from './Sidebar.svelte';
+  import Sidebar from "./Sidebar.svelte";
   import { visibility, logged } from "./store.js";
 
   let sidebar_show = false;
@@ -16,38 +16,47 @@
   </div>
 </header>
 <nav class="navbar-light bg-light px-5 py-0">
-  <Link to="/">
-    <div class="navbar-brand py-0">
-      <img
-        class="float-left logo"
-        src="img/logo-transparente.png"
-        width="90"
-        alt="devpc icon" />
-    </div>
-  </Link>
-  <div class="form-inline float-right mt-0 mt-md-0 pt-4">
-    {#if $logged}
-      <div style="visibility: {$visibility}">Carrito</div>
-      <Button type="logout" collection="users" />
-    {/if}
-
-    {#if !$logged}
-      <Link to="/register">
-        <div class="btn btn-dark pull-right">Registrarse</div>
+  <div class="row">
+    <div class="col">
+      <Link to="/">
+        <div class="py-0">
+          <img
+            class="float-left logo"
+            src="img/logo-transparente.png"
+            width="90"
+            alt="devpc icon" />
+        </div>
       </Link>
-      <button
-        class="btn btn-outline-dark my-0 ml-2 my-sm-0"
-        id="logIn"
-        data-toggle="modal"
-        data-target="#myModal">
-        Log in
-      </button>
-    {/if}
-  </div>
-  <div class="ml-2 float-left pt-4">
-    <div  id="menu-toggle">
-        <button on:click={() => sidebar_show = !sidebar_show} class="btn btn-dark"><i class="fas fa-bars" /></button>
-        <Sidebar bind:show={sidebar_show} />
+      <div class="ml-2 pt-4">
+        <div id="menu-toggle">
+          <button
+            on:click={() => (sidebar_show = !sidebar_show)}
+            class="btn btn-dark">
+            <i class="fas fa-bars" />
+          </button>
+          <Sidebar bind:show={sidebar_show} />
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-inline float-right mt-0 mt-md-0 pt-4">
+        {#if $logged}
+          <div style="visibility: {$visibility}">Carrito</div>
+          <Button type="logout" collection="users" />
+        {/if}
+        {#if !$logged}
+          <Link to="/register">
+            <div class="btn btn-dark pull-right">Registrarse</div>
+          </Link>
+          <button
+            class="btn btn-outline-dark my-0 ml-2 my-sm-0"
+            id="logIn"
+            data-toggle="modal"
+            data-target="#myModal">
+            Log in
+          </button>
+        {/if}
+      </div>
     </div>
   </div>
   <!-- Modal HTML -->
@@ -103,5 +112,5 @@
       </div>
     </div>
   </div>
-  
+
 </nav>
