@@ -3,7 +3,13 @@ import Button from './Button.svelte';
     export let product = {};
 </script>
 
-<div class="card col-4" on:click>
+<style>
+    .product {
+        z-index: 0;
+    }
+</style>
+
+<div class="card col-4 product" on:click>
     <img src="{product.image}" alt="{product._id}" class="img-fluid"/>
     <h5>{product.title}</h5>
     <span><b>Categor&iacute;a:</b> {product.category}</span>

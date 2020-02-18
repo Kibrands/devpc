@@ -1,6 +1,7 @@
 <script>
   import { setContext } from "svelte";
   import { Router } from "svelte-routing";
+  import {writable} from 'svelte/store';
   import Content from "./Content.svelte";
   import Nav from "./Nav.svelte";
 

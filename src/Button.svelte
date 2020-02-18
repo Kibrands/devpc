@@ -1,7 +1,7 @@
 <script>
-  import { onMount, getContext, setContext } from "svelte";
+  import { onMount, getContext } from "svelte";
   import {writable} from 'svelte/store';
-  import { jsonData } from "./store.js";
+  import { jsonData, visibility, logged } from "./store.js";
   import { md5 } from "./md5.js";
 
   export let type = "addToCart";
@@ -14,15 +14,10 @@
   let classes = "";
   let url = "";
 
-  export let visibility = writable("hidden");
-  export let logged = writable(false);
-  setContext("logged", logged);
-  setContext("visibility", visibility);
-
   function toggle() {
     $logged = !$logged;
-    if ($visibility == "hidden") $visibility = "";
-    else $visibility = "hidden";
+    if ($visibility == "hidden") $visibility = writable("");
+    else $visibility = writable("hidden");
   }
 
   const URL = getContext("URL");

@@ -2,8 +2,13 @@
   import { getContext } from "svelte";
   import { fly } from "svelte/transition";
   import { Link } from "svelte-routing";
+  import { category } from "./store.js";
 
   export let show = false;
+
+  function setCategory(cat){
+    $category = cat;
+  }
 </script>
 
 <style>
@@ -18,18 +23,62 @@
     overflow-y: auto;
     width: 20rem;
   }
+
+  #sidebar {
+    z-index: 2;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .dropdown-menu {
+    margin-left: 10%;
+  }
 </style>
 
 {#if show}
-  <nav transition:fly={{ x: 150, opacity: 0 }}>
-    <p>
+  <nav transition:fly={{ x: -150, opacity: 0 }} id="sidebar">
+    <li class="dropdown">
       <i class="fas fa-cubes" />
-      <a href="#components">&nbsp;&nbsp;&nbsp;Componentes</a>
-    </p>
-    <p>
+      <a
+        href="#components"
+        class="dropdown-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-expanded="false">
+        &nbsp;&nbsp;&nbsp;Componentes
+        <span class="caret" />
+      </a>
+      <ul class="dropdown-menu px-1" role="menu">
+        <li>
+          <a href="javascript:setCategory('CPU')">CPU</a>
+        </li>
+        <li>
+          <a href="javascript:">RAM</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown">
       <i class="fas fa-laptop" />
-      <a href="#computers">&nbsp;&nbsp;Ordenadores</a>
-    </p>
+      <a
+        href="#computers"
+        class="dropdown-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-expanded="false">
+        &nbsp;&nbsp;&nbsp;Ordenadores
+        <span class="caret" />
+      </a>
+      <ul class="dropdown-menu px-1" role="menu">
+        <li>
+          <a href="javascript:">Portátiles</a>
+        </li>
+        <li>
+          <a href="javascript:">Sobremesa</a>
+        </li>
+      </ul>
+    </li>
     <p>
       <i class="fas fa-mobile">&nbsp;</i>
       <a href="#smartphones">&nbsp;&nbsp;&nbsp;&nbsp;Smartphones</a>

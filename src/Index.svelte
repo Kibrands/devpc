@@ -1,7 +1,7 @@
 <script>
   import { Link } from "svelte-routing";
   import { onMount, getContext } from "svelte";
-  import { jsonData } from "./store.js";
+  import { jsonData, logged, category } from "./store.js";
 
   import Search from "./Search.svelte";
   import Product from "./Product.svelte";
@@ -10,11 +10,9 @@
   const URL = getContext("URL");
   let search = "";
   let product = {};
-  let logged = getContext("logged");
 
   // TODO -> Al pulsar la opción del sidebar, debe coger la categoría
-  export let category = "";
-  let findUrl = category == "" ? "" : "category/" + category;
+  let findUrl = $category == "" ? "" : "category/" + $category;
 
   onMount(async () => {
     const response = await fetch(URL.products + findUrl);
