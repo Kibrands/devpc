@@ -1,7 +1,7 @@
 <script>
   import { onMount, getContext } from "svelte";
   import {writable} from 'svelte/store';
-  import { jsonData, visibility, logged } from "./store.js";
+  import { jsonData, visibility, logged, user } from "./store.js";
   import { md5 } from "./md5.js";
 
   export let type = "addToCart";
@@ -98,6 +98,9 @@
           data.nick == document.nick &&
           data.password == md5(document.password)
         ) {
+          $user = writable(data);
+          console.log(user);
+          
           toggle();
         } else {
           alert("Datos incorrectos");
@@ -107,6 +110,7 @@
   }
 
   function logout() {
+    $user = writable("");
     toggle();
   }
 </script>

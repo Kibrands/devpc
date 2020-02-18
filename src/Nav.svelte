@@ -77,8 +77,8 @@
           <div class="form-group">
             <div class="clearfix">
               <label>Password</label>
-              <Link to="/forgot" class="pull-right text-muted">
-                <small>Forgot?</small>
+              <Link to="/forgot">
+                <small class="pull-right text-muted">Forgot?</small>
               </Link>
             </div>
             <input

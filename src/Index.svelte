@@ -26,6 +26,12 @@
     : $jsonData;
 </script>
 
+<style>
+  .breadcrumb {
+    border-radius: 0;
+  }
+</style>
+
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item active" aria-current="page">
