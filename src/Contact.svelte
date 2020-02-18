@@ -3,6 +3,9 @@
   import { user, logged } from "./store.js";
 
   let contactForm = {};
+
+if (user.data != nul)
+  window.document.getElementById("email").value = user.data.email; 
 </script>
 
 <style>
@@ -43,7 +46,6 @@
               type="email"
               class="form-control"
               id="email"
-              value={$user.email}
               readonly />
           {/if}
           {#if !$logged}

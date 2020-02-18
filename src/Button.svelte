@@ -1,7 +1,7 @@
 <script>
   import { onMount, getContext } from "svelte";
-  import {writable} from 'svelte/store';
-  import { jsonData, visibility, logged, user } from "./store.js";
+  import { writable } from "svelte/store";
+  import { jsonData, visibility, logged, user, loginData } from "./store.js";
   import { md5 } from "./md5.js";
 
   export let type = "addToCart";
@@ -15,9 +15,16 @@
   let url = "";
 
   function toggle() {
-    $logged = !$logged;
-    if ($visibility == "hidden") $visibility = writable("");
-    else $visibility = writable("hidden");
+    logged.set(!$logged);
+    if ($visibility == "hidden") visibility.set("");
+    else visibility.set("hidden");
+  }
+
+  function clearData() {
+    loginData.nick = "";
+    loginData.password = "";
+    window.document.getElementById("loginNick").value = "";
+    window.document.getElementById("loginPassword").value = "";
   }
 
   const URL = getContext("URL");
@@ -84,7 +91,7 @@
           $jsonData = [...$jsonData, data];
           window.location.href = "/";
         })
-        .catch(err => ko());
+        .catch(err => console.log(err));
     }
   }
 
@@ -98,10 +105,9 @@
           data.nick == document.nick &&
           data.password == md5(document.password)
         ) {
-          $user = writable(data);
-          console.log({user});
-          
+          user.data = data;
           toggle();
+          clearData();
         } else {
           alert("Datos incorrectos");
         }
@@ -110,7 +116,7 @@
   }
 
   function logout() {
-    $user = writable("");
+    user.data = {};
     toggle();
   }
 </script>

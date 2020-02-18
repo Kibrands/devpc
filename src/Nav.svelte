@@ -3,11 +3,9 @@
   import { onMount, getContext } from "svelte";
   import Button from "./Button.svelte";
   import Sidebar from "./Sidebar.svelte";
-  import { visibility, logged } from "./store.js";
+  import { visibility, logged, loginData } from "./store.js";
 
   let sidebar_show = false;
-
-  let loginData = {};
 </script>
 
 <header>
