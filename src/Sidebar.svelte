@@ -7,7 +7,7 @@
   export let show = false;
 
   function setCategory(cat) {
-    $category = cat;
+    category.set(cat);
   }
 </script>
 
@@ -59,7 +59,7 @@
           <a href="javascript:setCategory('CPU')">CPU</a>
         </li>
         <li>
-          <a href="javascript:">RAM</a>
+          <a href="javascript:setCategory('RAM')">RAM</a>
         </li>
       </ul>
     </li>
@@ -76,7 +76,7 @@
       </a>
       <ul class="dropdown-menu px-1" role="menu">
         <li>
-          <a href="javascript:">Portátiles</a>
+          <a href="javascript:setCategory('LAPTOP')">Portátiles</a>
         </li>
         <li>
           <a href="javascript:">Sobremesa</a>
