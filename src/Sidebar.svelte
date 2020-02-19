@@ -7,7 +7,7 @@
   export let show = false;
 
   function setCategory(cat) {
-    $category = cat;
+    category.set(cat);
   }
 </script>
 
@@ -43,7 +43,6 @@
 
 {#if show}
   <nav transition:fly={{ x: -150, opacity: 0 }} id="sidebar">
-
     <p>
       <button
         class="btn"
@@ -141,9 +140,49 @@
       </button>
     </p>
     <div class="collapse" id="collapseContacto" />
-
-
     <!--
+
+    <li class="dropdown">
+      <i class="fas fa-cubes" />
+      <a
+        href="#components"
+        class="dropdown-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-expanded="false">
+        &nbsp;&nbsp;&nbsp;Componentes
+        <span class="caret" />
+      </a>
+      <ul class="dropdown-menu px-1" role="menu">
+        <li>
+          <a href="javascript:setCategory('CPU')">CPU</a>
+        </li>
+        <li>
+          <a href="javascript:setCategory('RAM')">RAM</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <i class="fas fa-laptop" />
+      <a
+        href="#computers"
+        class="dropdown-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-expanded="false">
+        &nbsp;&nbsp;&nbsp;Ordenadores
+        <span class="caret" />
+      </a>
+      <ul class="dropdown-menu px-1" role="menu">
+        <li>
+          <a href="javascript:setCategory('LAPTOP')">Portátiles</a>
+        </li>
+        <li>
+          <a href="javascript:">Sobremesa</a>
+        </li>
+      </ul>
+    </li>
+
     <p>
       <i class="fas fa-mobile"></i>
       <a href="#smartphones"></a>

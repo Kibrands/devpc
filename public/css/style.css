@@ -57,7 +57,7 @@ a:hover {
 }
 
 footer {
-    background:	#383838 !important;
+    background: #383838 !important;
 }
 
 .breadcrumb {
@@ -78,4 +78,8 @@ body {
 
 .logo {
     filter: invert(75%);
+}
+
+.form-inline a {
+    display: contents !important;
 }

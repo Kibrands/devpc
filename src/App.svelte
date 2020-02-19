@@ -1,7 +1,7 @@
 <script>
   import { setContext } from "svelte";
   import { Router } from "svelte-routing";
-  import {writable} from 'svelte/store';
+  import { writable } from "svelte/store";
   import Content from "./Content.svelte";
   import Nav from "./Nav.svelte";
 
@@ -16,7 +16,9 @@
 </script>
 
 <style>
-
+  :global(.inversed) {
+    filter: brightness(0) invert(1);
+  }
 </style>
 
 <Router>

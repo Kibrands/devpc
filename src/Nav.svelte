@@ -8,6 +8,21 @@
   let sidebar_show = false;
 </script>
 
+<style>
+  .cart {
+    border-radius: 50%;
+  }
+
+  .cartCount {
+    color: white;
+    background-color: red;
+    font-size: 0.6em;
+    border-radius: 50%;
+    margin-left: -10px;
+    margin-top: -20px;
+  }
+</style>
+
 <header>
   <div class="myLine">
     <br />
@@ -39,7 +54,16 @@
     <div class="col">
       <div class="form-inline float-right mt-0 mt-md-0 pt-4">
         {#if $logged}
-          <div style="visibility: {$visibility}">Carrito</div>
+          <Link to="/cart">
+            <button class="btn btn-dark cart" style="visibility: {$visibility}">
+              <i class="fas fa-shopping-cart inversed" />
+            </button>
+            <div class="cartCount">
+              &nbsp;
+              <span>0</span>
+              &nbsp;
+            </div>
+          </Link>
           <Button type="logout" collection="users" />
         {/if}
         {#if !$logged}
