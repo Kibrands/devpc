@@ -136,7 +136,7 @@
         aria-expanded="false"
         aria-controls="collapseContacto">
         <i class="fas fa-headset" />
-        Contacto
+        <Link to="/contact">&nbsp;Contacto</Link>
       </button>
     </p>
     <div class="collapse" id="collapseContacto" />
