@@ -118,6 +118,7 @@
   function logout() {
     user.data = {};
     toggle();
+    window.location.href = "/";
   }
 </script>
 
