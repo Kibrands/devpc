@@ -6,3 +6,4 @@ export let logged = writable(false);
 export let category = writable("");
 export let user = writable({});
 export let loginData = writable({});
+export let search = writable("");

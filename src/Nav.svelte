@@ -3,7 +3,8 @@
   import { onMount, getContext } from "svelte";
   import Button from "./Button.svelte";
   import Sidebar from "./Sidebar.svelte";
-  import { visibility, logged, loginData } from "./store.js";
+  import Search from "./Search.svelte";
+  import { visibility, logged, loginData, jsonData} from "./store.js";
 
   let sidebar_show = false;
 </script>

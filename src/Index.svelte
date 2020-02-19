@@ -8,8 +8,8 @@
   import Button from "./Button.svelte";
 
   const URL = getContext("URL");
-  let search = "";
   let product = {};
+  let search = "";
 
   // TODO -> Al pulsar la opción del sidebar, debe coger la categoría
   let findUrl = $category == "" ? "" : "category/" + $category;
