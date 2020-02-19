@@ -43,7 +43,7 @@
               type="email"
               class="form-control"
               id="email"
-              value={user.data.email}
+              <!--value={user.data.email}-->
               readonly />
           {/if}
           {#if !$logged}
