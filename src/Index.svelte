@@ -30,14 +30,130 @@
   .breadcrumb {
     border-radius: 0;
   }
+
+  #navbarDropdown {
+    color: white;
+  }
+
+  .dropdown-item {
+    color: black;
+    padding: 20px;
+  }
+
+  .nav-item {
+    padding: auto 100px auto 100px;
+  }
 </style>
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item active" aria-current="page">
-      <i class="fas fa-home" />
-      Inicio
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false">
+        Ordenadores
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Portátiles</a>
+        <a class="dropdown-item" href="#">Sobremesa</a>
+      </div>
     </li>
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false">
+        Componentes
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">CPU</a>
+        <a class="dropdown-item" href="#">RAM</a>
+
+      </div>
+
+    </li>
+
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false">
+        Smartphones
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Samsung</a>
+        <a class="dropdown-item" href="#">Nokia</a>
+      </div>
+
+    </li>
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false">
+        Audio | Foto | Vídeo
+      </a>
+
+    </li>
+
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false">
+        Periféricos
+      </a>
+
+    </li>
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false">
+        Televisores
+      </a>
+
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link "
+        href="#"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false">
+        <Link to="/contact">Contacto</Link>
+      </a>
+
+    </li>
+
   </ol>
 </nav>
 

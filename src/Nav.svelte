@@ -25,11 +25,11 @@
 </style>
 
 <header>
-  <div class="myLine">
+<!--  <div class="myLine">
     <br />
-  </div>
+  </div> -->
 </header>
-<nav class="navbar-light bg-light px-5 py-0">
+<nav class="navbar-light bg-dark px-5 py-0">
   <div class="row">
     <div class="col">
       <Link to="/">
@@ -37,11 +37,11 @@
           <img
             class="float-left logo"
             src="img/logo-transparente.png"
-            width="90"
+            width="170"
             alt="devpc icon" />
         </div>
       </Link>
-      <div class="ml-2 pt-4">
+      <!--div class="ml-2 pt-4">
         <div id="menu-toggle">
           <button
             on:click={() => (sidebar_show = !sidebar_show)}
@@ -52,6 +52,7 @@
         </div>
       </div>
     </div>
+    -->
     <div class="col">
       <div class="form-inline float-right mt-0 mt-md-0 pt-4">
         {#if $logged}
@@ -72,7 +73,7 @@
             <div class="btn btn-dark pull-right">Registrarse</div>
           </Link>
           <button
-            class="btn btn-outline-dark my-0 ml-2 my-sm-0"
+            class="btn btn-outline-light my-0 ml-2 my-sm-0"
             id="logIn"
             data-toggle="modal"
             data-target="#myModal">
