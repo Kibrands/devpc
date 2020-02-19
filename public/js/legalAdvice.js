@@ -27,7 +27,7 @@ $(document).ready(function () {
     var contact = `
     Teléfono: 954 024 209<br>
     c/. San Juan, 11 - Planta Baja<br>
-    DivPc<br>
+    DevPc<br>
     `;
     $('#legalAdviceContact').html(contact);
     $('#legalAdviceContent').html(aviso);
