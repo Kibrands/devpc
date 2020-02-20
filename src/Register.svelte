@@ -2,7 +2,8 @@
   import { Link } from "svelte-routing";
   import User from './User.svelte';
   import Button from './Button.svelte';
-
+//Añadir variable que hasta que no sea ok, no muestre el botón.
+//Hacer fetch con todos los usuarios para ver quienes estan registrados.
   let user = {};
 </script>
 
