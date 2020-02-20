@@ -2,9 +2,8 @@
   import { Link } from "svelte-routing";
   import { onMount, getContext } from "svelte";
   import Button from "./Button.svelte";
-  import Sidebar from "./Sidebar.svelte";
   import Search from "./Search.svelte";
-  import { visibility, logged, loginData, jsonData} from "./store.js";
+  import { visibility, logged, loginData, jsonData } from "./store.js";
 
   let sidebar_show = false;
 </script>
@@ -24,11 +23,6 @@
   }
 </style>
 
-<header>
-<!--  <div class="myLine">
-    <br />
-  </div> -->
-</header>
 <nav class="navbar-light bg-dark px-5 py-0">
   <div class="row">
     <div class="col">
@@ -41,18 +35,7 @@
             alt="devpc icon" />
         </div>
       </Link>
-      <!--div class="ml-2 pt-4">
-        <div id="menu-toggle">
-          <button
-            on:click={() => (sidebar_show = !sidebar_show)}
-            class="btn btn-dark">
-            <i class="fas fa-bars" />
-          </button>
-          <Sidebar bind:show={sidebar_show} />
-        </div>
-      </div>
     </div>
-    -->
     <div class="col">
       <div class="form-inline float-right mt-0 mt-md-0 pt-4">
         {#if $logged}
