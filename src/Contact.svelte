@@ -16,21 +16,27 @@
     background: none !important;
     border: 2px solid #387b8a;
   }
+  .breadcrumb {
+    border-radius: 0;
+  }
+  h2, #subtitulo{
+    text-align: center;
+  }
 </style>
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
       <Link to="/">
-        <i class="fas fa-home" />
         Inicio
       </Link>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Contacto</li>
+    <li class="breadcrumb-item active" aria-current="page">Centro de soporte</li>
   </ol>
 </nav>
 <div class="container">
-  <h2>Contacto</h2>
+  <h2>Centro de soporte</h2>
+  <p id="subtitulo">¿Alguna duda? No dude en contactar con nosotros o en mirar las dudas frecuentes</p>
   <div class="row">
     <div class="col-8">
       <div class="form-group row">
