@@ -5,6 +5,7 @@ import Contact from './Contact.svelte';
 import Register from './Register.svelte';
 import Forgot from './Forgot.svelte';
 import Footer from './Footer.svelte';
+import Cart from './Cart.svelte';
 </script>
 
 <main id="main">
@@ -12,6 +13,7 @@ import Footer from './Footer.svelte';
 <Route path="/contact" component={Contact} />
 <Route path="/register" component={Register} />
 <Route path="/forgot" component={Forgot} />
+<Route path="/cart" component={Cart} />
 <Footer />
 <!-- Legal Advice -->
 <script src="js/legalAdvice.js"></script>

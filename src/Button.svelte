@@ -1,7 +1,7 @@
 <script>
   import { onMount, getContext } from "svelte";
   import { writable } from "svelte/store";
-  import { jsonData, visibility, logged, user, loginData } from "./store.js";
+  import { jsonData, cartData, visibility, logged, user, loginData } from "./store.js";
   import { md5 } from "./md5.js";
 
   export let type = "addToCart";
@@ -68,6 +68,21 @@
 
   function addToCart() {
     console.log(document);
+    if (
+      Object.keys(document).length > 1 &&
+      Object.values(document).every(x => x !== undefined && x != "")
+    ) {
+      fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(document)
+      })
+        .then(res => res.json())
+        .then(data => {
+          $cartData = [...$cartData, data];
+        })
+        .catch(err => console.log(err));
+    }
   }
 
   function register() {

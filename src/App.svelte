@@ -19,14 +19,6 @@
   :global(.inversed) {
     filter: brightness(0) invert(1);
   }
-
-  :global(.nav-link a){
-    color: white;
-  }
-
-  :global(.nav-link a:hover){
-    color: lightgray;
-  }
 </style>
 
 <Router>
