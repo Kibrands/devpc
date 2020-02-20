@@ -1,10 +1,12 @@
 <script>
+  import { Link } from "svelte-routing";
 </script>
 
 <style>
   #footer {
     z-index: 3;
   }
+
 </style>
 
 <div
@@ -56,5 +58,9 @@
     data-target="#legalAdvice"
     id="avisoLegal">
     Aviso Legal y Pol&iacute;tica de Privacidad
+  </a>
+  |
+  <a href="#" data-target="#contacto" id="contacto">
+    <Link to="/contact">Contacto</Link>
   </a>
 </footer>
