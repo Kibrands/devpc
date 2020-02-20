@@ -1,7 +1,7 @@
 <script>
   import { Link } from "svelte-routing";
   import { onMount, getContext } from "svelte";
-  import { jsonData, logged, category } from "./store.js";
+  import { jsonData, logged } from "./store.js";
 
   import Search from "./Search.svelte";
   import Product from "./Product.svelte";
@@ -10,9 +10,14 @@
   const URL = getContext("URL");
   let product = {};
   let search = "";
+  let category = "";
+
+  function setCategory(cat) {
+    category = cat;
+  }
 
   // TODO -> Al pulsar la opción del sidebar, debe coger la categoría
-  let findUrl = $category == "" ? "" : "category/" + $category;
+  let findUrl = category == "" ? "" : "category/" + category;
 
   onMount(async () => {
     const response = await fetch(URL.products + findUrl);
@@ -59,7 +64,7 @@
         Ordenadores
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">Portátiles</a>
+        <a class="dropdown-item" href="javascript:{setCategory('LAPTOP')}">Portátiles</a>
         <a class="dropdown-item" href="#">Sobremesa</a>
       </div>
     </li>
@@ -158,8 +163,6 @@
 </nav>
 
 <div class="container">
-  <Search bind:search />
-
   <div
     id="carouselExampleIndicators"
     class="carousel slide"
@@ -200,6 +203,8 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+  <br />
+  <Search bind:search />
 
   <div class="row">
     {#each dataResponse as product}
