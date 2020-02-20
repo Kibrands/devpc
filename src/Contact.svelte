@@ -3,6 +3,7 @@
   import { user, logged } from "./store.js";
 
   let contactForm = {};
+  let userData = $user.data;
 </script>
 
 <style>
@@ -43,7 +44,7 @@
               type="email"
               class="form-control"
               id="email"
-              <!--value={user.data.email}-->
+              value={userData.email}
               readonly />
           {/if}
           {#if !$logged}

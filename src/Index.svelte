@@ -34,6 +34,7 @@
 <style>
   .breadcrumb {
     border-radius: 0;
+    padding: 0.9rem 7.5rem;
   }
 
   #navbarDropdown {
@@ -142,21 +143,45 @@
         aria-expanded="false">
         Televisores
       </a>
-
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item dropdown">
       <a
-        class="nav-link "
+        class="nav-link dropdown-toggle"
         href="#"
         id="navbarDropdown"
         role="button"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false">
-        <Link to="/contact">Contacto</Link>
+        Tablets
       </a>
+    </li>
 
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false">
+        Consolas
+      </a>
+    </li>
+
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false">
+        Impresoras
+      </a>
     </li>
 
   </ol>
