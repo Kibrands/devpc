@@ -45,7 +45,7 @@
         break;
       case "logout":
         handler = logout;
-        classes = "btn btn-outline-dark my-0 ml-2 my-sm-0 btn-logout";
+        classes = "btn btn-outline-light my-0 ml-2 my-sm-0 btn-logout";
         break;
       default:
     }
