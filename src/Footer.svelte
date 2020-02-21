@@ -6,7 +6,6 @@
   #footer {
     z-index: 3;
   }
-
 </style>
 
 <div
@@ -60,7 +59,7 @@
     Aviso Legal y Pol&iacute;tica de Privacidad
   </a>
   |
-  <a href="#" data-target="#contacto" id="contacto">
+  <a href="#contacto" id="contacto">
     <Link to="/contact">Contacto</Link>
   </a>
 </footer>

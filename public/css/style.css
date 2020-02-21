@@ -12,6 +12,18 @@
     bottom: 0;
 }
 
+#contacto {
+    color: rgb(0, 161, 224);
+}
+
+#contacto a:hover {
+    color: rgb(0, 161, 224) !important;
+}
+
+#contacto a:visited {
+    color: rgb(0, 161, 224) !important;
+}
+
 .op-05 {
     opacity: 0.5;
 }
