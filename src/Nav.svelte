@@ -1,11 +1,8 @@
 <script>
   import { Link } from "svelte-routing";
-  import { onMount, getContext } from "svelte";
   import Button from "./Button.svelte";
   import Search from "./Search.svelte";
-  import { visibility, logged, loginData, jsonData } from "./store.js";
-
-  let sidebar_show = false;
+  import { visibility, logged, loginData, user, cartCount } from "./store.js";
 </script>
 
 <style>
@@ -45,7 +42,7 @@
             </button>
             <div class="cartCount">
               &nbsp;
-              <span>0</span>
+              <span>{$cartCount}</span>
               &nbsp;
             </div>
           </Link>

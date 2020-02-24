@@ -10,17 +10,17 @@
   const URL = getContext("URL");
   let product = {};
   let search = "";
-  let category = "";
+  let opened = true;
+  let cart = [];
 
-  function setCategory(cat) {
-    category = cat;
-  }
-
-  // TODO -> Al pulsar la opción del sidebar, debe coger la categoría
-  let findUrl = category == "" ? "" : "category/" + category;
-
+  let category = findGetParameter("cat");
+  let fetchURL = URL.products;
   onMount(async () => {
-    const response = await fetch(URL.products + findUrl);
+    if (category != null && category != undefined && category != "") {
+      fetchURL += "category/" + category;
+      opened = false;
+    }
+    const response = await fetch(fetchURL);
     const data = await response.json();
     $jsonData = data;
   });
@@ -29,6 +29,19 @@
   $: dataResponse = search
     ? $jsonData.filter(item => regex.test(item.title))
     : $jsonData;
+
+  function findGetParameter(parameterName) {
+    var result = null,
+      tmp = [];
+    location.search
+      .substr(1)
+      .split("?")
+      .forEach(function(item) {
+        tmp = item.split("=");
+        if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+      });
+    return result;
+  }
 </script>
 
 <style>
@@ -41,7 +54,7 @@
     color: white;
   }
 
-  .dropdown-item {
+  .dropdown-menu {
     color: black;
     padding: 20px;
   }
@@ -56,7 +69,7 @@
     <li class="nav-item dropdown">
       <a
         class="nav-link dropdown-toggle"
-        href="#"
+        href="#dropdown-button"
         id="navbarDropdown"
         role="button"
         data-toggle="dropdown"
@@ -65,14 +78,14 @@
         Ordenadores
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="javascript:{setCategory('LAPTOP')}">Portátiles</a>
-        <a class="dropdown-item" href="#">Sobremesa</a>
+        <a class="dropdown-item" href="?cat=LAPTOP">Port&aacute;tiles</a>
+        <a class="dropdown-item" href="?cat=PC">Sobremesa</a>
       </div>
     </li>
     <li class="nav-item dropdown">
       <a
         class="nav-link dropdown-toggle"
-        href="#"
+        href="#dropdown-button"
         id="navbarDropdown"
         role="button"
         data-toggle="dropdown"
@@ -81,8 +94,8 @@
         Componentes
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">CPU</a>
-        <a class="dropdown-item" href="#">RAM</a>
+        <a class="dropdown-item" href="?cat=CPU">CPU</a>
+        <a class="dropdown-item" href="?cat=RAM">RAM</a>
 
       </div>
 
@@ -91,7 +104,7 @@
     <li class="nav-item dropdown">
       <a
         class="nav-link dropdown-toggle"
-        href="#"
+        href="#dropdown-button"
         id="navbarDropdown"
         role="button"
         data-toggle="dropdown"
@@ -100,15 +113,15 @@
         Smartphones
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">Samsung</a>
-        <a class="dropdown-item" href="#">Nokia</a>
+        <a class="dropdown-item" href="?cat=SAMSUNG">Samsung</a>
+        <a class="dropdown-item" href="?cat=NOKIA">Nokia</a>
       </div>
 
     </li>
     <li class="nav-item dropdown">
       <a
         class="nav-link dropdown-toggle"
-        href="#"
+        href="#dropdown-button"
         id="navbarDropdown"
         role="button"
         data-toggle="dropdown"
@@ -122,7 +135,7 @@
     <li class="nav-item dropdown">
       <a
         class="nav-link dropdown-toggle"
-        href="#"
+        href="#dropdown-button"
         id="navbarDropdown"
         role="button"
         data-toggle="dropdown"
@@ -135,7 +148,7 @@
     <li class="nav-item dropdown">
       <a
         class="nav-link dropdown-toggle"
-        href="#"
+        href="#dropdown-button"
         id="navbarDropdown"
         role="button"
         data-toggle="dropdown"
@@ -148,7 +161,7 @@
     <li class="nav-item dropdown">
       <a
         class="nav-link dropdown-toggle"
-        href="#"
+        href="#dropdown-button"
         id="navbarDropdown"
         role="button"
         data-toggle="dropdown"
@@ -161,7 +174,7 @@
     <li class="nav-item dropdown">
       <a
         class="nav-link dropdown-toggle"
-        href="#"
+        href="#dropdown-button"
         id="navbarDropdown"
         role="button"
         data-toggle="dropdown"
@@ -174,7 +187,7 @@
     <li class="nav-item dropdown">
       <a
         class="nav-link dropdown-toggle"
-        href="#"
+        href="#dropdown-button"
         id="navbarDropdown"
         role="button"
         data-toggle="dropdown"
@@ -188,66 +201,76 @@
 </nav>
 
 <div class="container">
-  <div
-    id="carouselExampleIndicators"
-    class="carousel slide"
-    data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li
-        data-target="#carouselExampleIndicators"
-        data-slide-to="0"
-        class="active" />
-      <li data-target="#carouselExampleIndicators" data-slide-to="1" />
-      <li data-target="#carouselExampleIndicators" data-slide-to="2" />
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="d-block w-100" src="img/ordenador.jpg" alt="First slide" />
+  {#if opened}
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide"
+      data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li
+          data-target="#carouselExampleIndicators"
+          data-slide-to="0"
+          class="active" />
+        <li data-target="#carouselExampleIndicators" data-slide-to="1" />
+        <li data-target="#carouselExampleIndicators" data-slide-to="2" />
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            class="d-block w-100"
+            src="img/ordenador.jpg"
+            alt="First slide" />
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="img/reloj.jpg" alt="Second slide" />
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="img/movil.jpg" alt="Third slide" />
+        </div>
       </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="img/reloj.jpg" alt="Second slide" />
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="img/movil.jpg" alt="Third slide" />
-      </div>
+      <a
+        class="carousel-control-prev"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true" />
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true" />
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-    <a
-      class="carousel-control-prev"
-      href="#carouselExampleIndicators"
-      role="button"
-      data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true" />
-      <span class="sr-only">Previous</span>
-    </a>
-    <a
-      class="carousel-control-next"
-      href="#carouselExampleIndicators"
-      role="button"
-      data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true" />
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+  {/if}
   <br />
   <Search bind:search />
 
   <div class="row">
     {#each dataResponse as product}
-      <Product {product}>
-        <div style="text-align: right">
-          {#if $logged}
-            <Button document={product} type="addToCart" collection="products" />
-          {/if}
-          {#if !$logged}
-            <button
-              class="btn btn-dark"
-              data-toggle="modal"
-              data-target="#myModal">
-              Añadir al carrito
-            </button>
-          {/if}
-        </div>
-      </Product>
+      {#if product.stock > 0}
+        <Product {product}>
+          <div style="text-align: right">
+            {#if $logged}
+              <Button
+                document={product}
+                type="addToCart"
+                collection="carts" />
+            {/if}
+            {#if !$logged}
+              <button
+                class="btn btn-dark"
+                data-toggle="modal"
+                data-target="#myModal">
+                Añadir al carrito
+              </button>
+            {/if}
+          </div>
+        </Product>
+      {/if}
     {/each}
   </div>
 </div>

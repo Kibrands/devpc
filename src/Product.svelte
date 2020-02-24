@@ -1,5 +1,6 @@
 <script>
   import Button from "./Button.svelte";
+
   export let product = {};
 
   let pvp =
@@ -43,7 +44,8 @@
   <hr />
   <div class="prices row pb-4">
     <div class="col-4">
-      <b>Precio:</b><br />
+      <b>Precio:</b>
+      <br />
       <span id="pvp" class="ml-1">{pvp}</span>
     </div>
     <div class="col-2">

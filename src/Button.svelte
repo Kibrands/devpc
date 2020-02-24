@@ -1,7 +1,15 @@
 <script>
   import { onMount, getContext } from "svelte";
   import { writable } from "svelte/store";
-  import { jsonData, cartData, visibility, logged, user, loginData } from "./store.js";
+  import {
+    jsonData,
+    cartData,
+    visibility,
+    logged,
+    user,
+    loginData,
+    cartCount
+  } from "./store.js";
   import { md5 } from "./md5.js";
 
   export let type = "addToCart";
@@ -66,20 +74,29 @@
     }
   });
 
+  async function getCount() {
+    const response = await fetch(URL.carts + "user/" + user.data._id);
+    const data = await response.json();
+    data.forEach(element => {
+      $cartCount++;
+    });
+  }
+
   function addToCart() {
-    console.log(document);
+    $cartData = { userId: user.data._id, productId: document._id, amount: 1 };
+    console.log(url);
     if (
-      Object.keys(document).length > 1 &&
-      Object.values(document).every(x => x !== undefined && x != "")
+      Object.keys($cartData).length > 1 &&
+      Object.values($cartData).every(x => x !== undefined && x != "")
     ) {
       fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(document)
+        body: JSON.stringify($cartData)
       })
         .then(res => res.json())
         .then(data => {
-          $cartData = [...$cartData, data];
+          console.log(data);
         })
         .catch(err => console.log(err));
     }
@@ -121,6 +138,7 @@
           data.password == md5(document.password)
         ) {
           user.data = data;
+          getCount();
           toggle();
           clearData();
         } else {
