@@ -8,7 +8,8 @@
     logged,
     user,
     loginData,
-    cartCount
+    cartCount,
+    carts
   } from "./store.js";
   import { md5 } from "./md5.js";
 
@@ -55,6 +56,10 @@
         handler = logout;
         classes = "btn btn-outline-light my-0 ml-2 my-sm-0 btn-logout";
         break;
+      case "deleteCart":
+        handler = deleteCart;
+        classes = "btn btn-dark my-0 ml-2 my-sm-0 btn-deleteCart";
+        break;
       default:
     }
     switch (collection) {
@@ -75,11 +80,21 @@
   });
 
   async function getCount() {
+    let count = 0;
     const response = await fetch(URL.carts + "user/" + user.data._id);
     const data = await response.json();
     data.forEach(element => {
-      $cartCount++;
+      ++count;
     });
+    $cartCount = await count;
+  }
+
+  function deleteCart() {
+    fetch(url + document._id, {
+      method: "DELETE"
+    });
+    $carts = fetch(URL.carts);
+    getCount();
   }
 
   function addToCart() {
@@ -96,10 +111,10 @@
       })
         .then(res => res.json())
         .then(data => {
-          console.log(data);
         })
         .catch(err => console.log(err));
     }
+    getCount();
   }
 
   function register() {
@@ -125,6 +140,7 @@
         })
         .catch(err => console.log(err));
     }
+    getCount();
   }
 
   function login() {
@@ -170,6 +186,10 @@
 
   .btn-logout::after {
     content: "Logout";
+  }
+
+  .btn-deleteCart::after {
+    content: "Eliminar";
   }
 </style>
 
