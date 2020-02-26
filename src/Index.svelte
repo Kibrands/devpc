@@ -6,6 +6,8 @@
   import Button from "./Button.svelte";
   import Search from "./Search.svelte";
   import ProductsNav from "./ProductsNav.svelte";
+  import Modal from "svelte-simple-modal";
+  
 
   const URL = getContext("URL");
   let product = {};

@@ -143,19 +143,5 @@
         Consolas
       </a>
     </li>
-
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#dropdown-button"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Impresoras
-      </a>
-    </li>
-
   </ol>
 </nav>
