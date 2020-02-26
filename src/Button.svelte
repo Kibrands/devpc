@@ -1,7 +1,7 @@
 <script>
   import { onMount, getContext } from "svelte";
-  import { writable } from "svelte/store"; 
-  import Swal from 'sweetalert2';
+  import { writable } from "svelte/store";
+  import Swal from "sweetalert2";
 
   import {
     jsonData,
@@ -92,7 +92,7 @@
   }
 
   function deleteCart() {
-    fetch(url + document._id, {
+    fetch(url + "user/" + document.userId + "/product/" + document.productId, {
       method: "DELETE"
     });
     $carts = fetch(URL.carts);
@@ -117,9 +117,9 @@
     }
     getCount();
     Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Se ha añadido al carro',
+      position: "center",
+      icon: "success",
+      title: "Se ha añadido al carro",
       showConfirmButton: false,
       timer: 1500
     });
