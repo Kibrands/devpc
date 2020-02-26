@@ -1,6 +1,8 @@
 <script>
   import { onMount, getContext } from "svelte";
-  import { writable } from "svelte/store";
+  import { writable } from "svelte/store"; 
+  import Swal from 'sweetalert2';
+
   import {
     jsonData,
     cartData,
@@ -110,11 +112,17 @@
         body: JSON.stringify($cartData)
       })
         .then(res => res.json())
-        .then(data => {
-        })
+        .then(data => {})
         .catch(err => console.log(err));
     }
     getCount();
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Se ha añadido al carro',
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 
   function register() {
