@@ -62,6 +62,10 @@
         handler = deleteCart;
         classes = "btn btn-dark my-0 ml-2 my-sm-0 btn-deleteCart";
         break;
+      case "purchase":
+        handler = purchase;
+        classes = "btn btn-dark my-0 ml-4 btn-purchase"
+        break;
       default:
     }
     switch (collection) {
@@ -91,9 +95,35 @@
     $cartCount = await count;
   }
 
+  function purchase() {
+    let purchase = {};
+    purchase.cart = $carts;
+    purchase.payment = document;
+    purchase.paid = true;
+    console.log(purchase);
+    
+    /*
+    fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(purchase)
+      })
+        .then(res => res.json())
+        .then(data => {})
+        .catch(err => console.log(err));
+    */
+  }
+
   function deleteCart() {
     fetch(url + "user/" + document.userId + "/product/" + document.productId, {
       method: "DELETE"
+    });
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Producto eliminado del carro",
+      showConfirmButton: false,
+      timer: 1500
     });
     $carts = fetch(URL.carts);
     getCount();
@@ -101,7 +131,6 @@
 
   function addToCart() {
     $cartData = { userId: user.data._id, productId: document._id, amount: 1 };
-    console.log(url);
     if (
       Object.keys($cartData).length > 1 &&
       Object.values($cartData).every(x => x !== undefined && x != "")
@@ -198,6 +227,10 @@
 
   .btn-deleteCart::after {
     content: "Eliminar";
+  }
+
+  .btn-purchase::after {
+    content: "Realizar compra";
   }
 </style>
 

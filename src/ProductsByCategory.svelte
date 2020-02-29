@@ -3,6 +3,7 @@
   import Product from "./Product.svelte";
   import Button from "./Button.svelte";
   import ProductsNav from "./ProductsNav.svelte";
+  import Modal from "svelte-simple-modal";
   import { Link } from "svelte-routing";
   import { jsonData, logged } from "./store.js";
   import { onMount, getContext } from "svelte";

@@ -10,6 +10,8 @@
   let search = "";
   let category = "";
   let product = [{ title: "a", image: "a" }];
+  let totalAmount = 0;
+  let payment = "";
 
   function isIncluded(carts, data) {
     let inBool = false;
@@ -20,6 +22,7 @@
   }
 
   function prepare(data) {
+    $carts = [];
     for (let i = 0; i < data.length; i++) {
       if (isIncluded($carts, data[i])) {
         $carts.forEach(element => {
@@ -47,6 +50,7 @@
     const resp = await fetch(URL.products + cart.productId);
     const data = await resp.json();
     product[i] = await data;
+    totalAmount += product[i].price * cart.amount;
     return product[i];
   }
 </script>
@@ -69,9 +73,22 @@
               <h5>{prod.title}</h5>
               <label for="amountSelected">Cantidad seleccionada</label>
               <input type="number" value={cart.amount} />
-              <p>Precio x 1: <b>{prod.price} &euro;</b></p>
+              {#if cart.amount > prod.stock}
+                <div class="alert alert-danger" role="alert">
+                  Actualmente no tenemos más de {prod.stock} unidad{#if prod.stock > 1}es{/if}
+                  de este producto . Por favor, elija un número igual o
+                  inferior.
+                </div>
+              {/if}
+              <p>
+                Precio x 1:
+                <b>{prod.price} &euro;</b>
+              </p>
               {#if cart.amount > 1}
-                <p>Precio x {cart.amount}: <b>{prod.price * cart.amount} &euro;</b></p>
+                <p>
+                  Precio x {cart.amount}:
+                  <b>{prod.price * cart.amount} &euro;</b>
+                </p>
               {/if}
               <Button type="deleteCart" document={cart} collection="carts" />
             </div>
@@ -79,5 +96,19 @@
         </div>
       {/await}
     {/each}
+    <hr />
+    <label for="payment">M&eacute;todo de pago</label>
+    <input
+      id="payment"
+      type="text"
+      class="form-control"
+      bind:value={payment}
+      required />
+    <br />
+    <h3 class="w-100">
+      Total: {parseFloat(totalAmount).toFixed(2)} &euro;
+      <Button type="purchase" collection="purchases" document={payment} />
+    </h3>
+    <br />
   </div>
 </div>

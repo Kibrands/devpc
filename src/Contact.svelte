@@ -3,6 +3,13 @@
   import { user, logged } from "./store.js";
 
   let contactForm = {};
+  function getEmail() {
+    if ($logged) {
+      return user.data.email;
+    } else {
+      return "";
+    }
+  }
 </script>
 
 <style>
@@ -54,11 +61,24 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="email">Email*</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              placeholder="Email" />
+            {#if $logged}
+              {#await getEmail() then email}
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  value={email}
+                  readonly />
+              {/await}
+            {/if}
+            {#if !$logged}
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Email"
+                required />
+            {/if}
           </div>
           <div class="form-group col-md-6">
             <label for="nombre">Nombre*</label>
@@ -66,7 +86,8 @@
               type="text"
               class="form-control"
               id="nombre"
-              placeholder="Nombre" />
+              placeholder="Nombre"
+              required />
           </div>
         </div>
         <div class="form-group">
@@ -75,11 +96,12 @@
             type="text"
             class="form-control"
             id="direccion"
-            placeholder="C/ " />
+            placeholder="C/ "
+            required />
         </div>
         <div class="form-group">
           <label for="asunto">Asunto*</label>
-          <select id="asunto" class="form-control">
+          <select id="asunto" class="form-control" required>
             <option selected />
             <option>Devoluciones</option>
             <option>Garantías</option>
@@ -92,7 +114,11 @@
           <textarea class="form-control" id="mensaje" rows="3" />
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="gridCheck" />
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="gridCheck"
+            required />
           <label class="form-check-label" for="gridCheck">
             He leído y acepto la política de protección de datos.
           </label>
@@ -100,23 +126,6 @@
         <br />
         <button type="submit" class="btn btn-primary">Enviar</button>
       </form>
-      <!-- <div class="col-sm-10">
-        {#if $logged}
-          <input
-            bind:value={contactForm.email}
-            type="email"
-            class="form-control"
-            id="email"
-            readonly />
-        {/if}
-        {#if !$logged}
-          <input
-            bind:value={contactForm.email}
-            type="email"
-            class="form-control"
-            id="email" />
-        {/if}
-      </div> -->
     </div>
     <div class="col-xl-7">
       <div class="mapouter">
