@@ -64,7 +64,7 @@
         break;
       case "purchase":
         handler = purchase;
-        classes = "btn btn-dark my-0 ml-4 btn-purchase"
+        classes = "btn btn-dark my-0 ml-4 btn-purchase";
         break;
       default:
     }
@@ -95,23 +95,99 @@
     $cartCount = await count;
   }
 
-  function purchase() {
+  async function getProductById(productId) {
+    const productResponse = await fetch(URL.products + productId);
+    return await productResponse.json();
+  }
+
+  async function deleteForEachCart(element) {
+    let productToPut = {};
+    productToPut = await getProductById(element.productId);
+    if (productToPut.stock >= element.amount) {
+      productToPut.stock -= element.amount;
+      fetch(URL.products + element.productId, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(productToPut)
+      }).catch(err => {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Error",
+          showConfirmButton: true
+        });
+      });
+      fetch(
+        URL.carts + "user/" + element.userId + "/product/" + element.productId,
+        {
+          method: "DELETE"
+        }
+      ).catch(err => {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Error",
+          showConfirmButton: true
+        });
+      });
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function deleteCartsAndUpdateProducts() {
+    let allOk = true;
+    $carts.forEach(element => {
+      allOk = deleteForEachCart(element);
+      if (!allOk) {
+        return false;
+      }
+    });
+    return allOk;
+  }
+
+  async function purchase() {
     let purchase = {};
     purchase.cart = $carts;
     purchase.payment = document;
     purchase.paid = true;
-    console.log(purchase);
-    
-    /*
-    fetch(url, {
+    let allOk = await deleteCartsAndUpdateProducts();
+    if (allOk) {
+      await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(purchase)
       })
         .then(res => res.json())
-        .then(data => {})
-        .catch(err => console.log(err));
-    */
+        .then(data => {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Compra realizada correctamente",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          $carts = fetch(URL.carts + "user/" + user.data._id);
+          getCount();
+        })
+        .catch(err => {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Error en la compra",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        });
+    } else {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Por favor, haga los cambios necesarios",
+        showConfirmButton: true
+      });
+    }
   }
 
   function deleteCart() {
@@ -125,7 +201,7 @@
       showConfirmButton: false,
       timer: 1500
     });
-    $carts = fetch(URL.carts);
+    $carts = fetch(URL.carts + "user/" + user.data._id);
     getCount();
   }
 
@@ -142,7 +218,15 @@
       })
         .then(res => res.json())
         .then(data => {})
-        .catch(err => console.log(err));
+        .catch(err => {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Error añadiendo el producto",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        });
     }
     getCount();
     Swal.fire({
@@ -175,7 +259,15 @@
           $jsonData = [...$jsonData, data];
           window.location.href = "/";
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Error en el registro",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        });
     }
     getCount();
   }
@@ -198,7 +290,16 @@
           alert("Datos incorrectos");
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Error al acceder",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        clearData();
+      });
   }
 
   function logout() {

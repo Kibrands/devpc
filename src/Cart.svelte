@@ -41,6 +41,8 @@
   }
 
   onMount(async () => {
+    if (!$logged) user.data._id = "";
+    totalAmount = 0;
     const response = await fetch(URL.carts + "user/" + user.data._id);
     const data = await response.json();
     await prepare(data);
@@ -50,6 +52,7 @@
     const resp = await fetch(URL.products + cart.productId);
     const data = await resp.json();
     product[i] = await data;
+    if (i == 0) totalAmount = 0;
     totalAmount += product[i].price * cart.amount;
     return product[i];
   }
@@ -73,7 +76,7 @@
               <div class="col-10">
                 <h5>{prod.title}</h5>
                 <label for="amountSelected">Cantidad seleccionada</label>
-                <input type="number" value={cart.amount} />
+                <input type="number" bind:value={$carts[i].amount} />
                 {#if cart.amount > prod.stock}
                   <div class="alert alert-danger" role="alert">
                     Actualmente no tenemos más de {prod.stock} unidad{#if prod.stock > 1}es{/if}
@@ -88,7 +91,7 @@
                 {#if cart.amount > 1}
                   <p>
                     Precio x {cart.amount}:
-                    <b>{prod.price * cart.amount} &euro;</b>
+                    <b>{parseFloat(prod.price * cart.amount).toFixed(2)} &euro;</b>
                   </p>
                 {/if}
                 <Button type="deleteCart" document={cart} collection="carts" />

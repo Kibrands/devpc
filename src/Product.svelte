@@ -43,7 +43,9 @@
   }
 </style>
 
-<div class="card col-sm-4 col-xs-12 mb-2 product" on:click>
+<div
+  class="card col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-2 product"
+  on:click>
   <img src={product.image} alt={product._id} class="img-fluid" />
   <h5>{product.title}</h5>
   <hr />
