@@ -114,8 +114,14 @@
         Periféricos
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link to="/products?cat=KEYBOARD">Teclados</Link>
         <Link to="/products?cat=SCREEN">Monitores</Link>
+        <Link to="/products?cat=KEYBOARD">Teclados</Link>
+        <Link to="/products?cat=MOUSE">Ratones</Link>
+        <Link to="/products?cat=SPEAKERS">Altavoces</Link>
+        <Link to="/products?cat=HEADPHONES">Auriculares/Cascos</Link>
+        <Link to="/products?cat=GAMING_CHAIR">Sillas Gaming</Link>
+        <Link to="/products?cat=MICROPHONE">Micr&oacute;fonos</Link>
+        <Link to="/products?cat=USB_MEMORY">Memoria USB</Link>
       </div>
     </li>
     <li class="nav-item dropdown">
@@ -127,21 +133,13 @@
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false">
-        Televisores
-      </a>
-    </li>
-
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#dropdown-button"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
         Tablets
       </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <Link to="/products?cat=SAMSUNG_TABLET">SAMSUNG</Link>
+        <Link to="/products?cat=HUAWEI_TABLET">HUAWEI</Link>
+        <Link to="/products?cat=LENOVO_TABLET">LENOVO</Link>
+      </div>
     </li>
 
     <li class="nav-item dropdown">
@@ -155,6 +153,12 @@
         aria-expanded="false">
         Consolas
       </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <Link to="/products?cat=PS4">PS4</Link>
+        <Link to="/products?cat=NINTENDO_SWITCH">Nintendo Switch</Link>
+        <Link to="/products?cat=XBOX_ONE">XBox One</Link>
+        <Link to="/products?cat=DS_3DS">DS/3DS</Link>
+      </div>
     </li>
   </ol>
 </nav>
