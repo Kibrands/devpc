@@ -99,6 +99,7 @@
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <Link to="/products?cat=TV">Televisores</Link>
+        <Link to="/products?cat=CAMERA">C&aacute;maras</Link>
       </div>
     </li>
     <li class="nav-item dropdown">
@@ -114,6 +115,7 @@
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <Link to="/products?cat=KEYBOARD">Teclados</Link>
+        <Link to="/products?cat=SCREEN">Monitores</Link>
       </div>
     </li>
     <li class="nav-item dropdown">
