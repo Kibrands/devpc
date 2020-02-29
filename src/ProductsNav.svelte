@@ -56,6 +56,7 @@
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <Link to="/products?cat=CPU">CPU</Link>
         <Link to="/products?cat=RAM">RAM</Link>
+        <Link to="/products?cat=GRAPHIC_BOARD">Tarjetas gr&aacute;ficas</Link>
       </div>
     </li>
 
@@ -75,8 +76,8 @@
         <Link to="/products?cat=NOKIA">NOKIA</Link>
         <Link to="/products?cat=IPHONE">IPHONE</Link>
         <Link to="/products?cat=XIAOMI">XIAOMI</Link>
+        <Link to="/products?cat=SMARTPHONE_ACC">Accesorios</Link>
       </div>
-
     </li>
     <li class="nav-item dropdown">
       <a
@@ -89,7 +90,6 @@
         aria-expanded="false">
         Audio | Foto | Vídeo
       </a>
-
     </li>
 
     <li class="nav-item dropdown">
@@ -103,7 +103,9 @@
         aria-expanded="false">
         Periféricos
       </a>
-
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <Link to="/products?cat=KEYBOARD">Teclados</Link>
+      </div>
     </li>
     <li class="nav-item dropdown">
       <a

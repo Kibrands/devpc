@@ -46,7 +46,7 @@
     <div class="col-4">
       <b>Precio:</b>
       <br />
-      <span id="pvp" class="ml-1">{pvp}</span>
+      <span id="pvp" class="ml-1">{parseFloat(pvp).toFixed(2)}</span>
     </div>
     <div class="col-2">
       {#if product.dto > 0}
