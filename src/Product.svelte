@@ -4,7 +4,9 @@
   export let product = {};
 
   let pvp =
-    product.dto > 0 ? (product.price * product.dto) / 100 : product.price;
+    product.dto > 0
+      ? (product.price * (100 - product.dto)) / 100
+      : product.price;
 </script>
 
 <style>
