@@ -58,6 +58,12 @@
         <Link to="/products?cat=CPU">CPU</Link>
         <Link to="/products?cat=RAM">RAM</Link>
         <Link to="/products?cat=GRAPHIC_BOARD">Tarjetas gr&aacute;ficas</Link>
+        <Link to="/products?cat=HDD">Discos Duros</Link>
+        <Link to="/products?cat=SSD">Memorias SSD</Link>
+        <Link to="/products?cat=M2">Memorias M.2</Link>
+        <Link to="/products?cat=POWER">Fuentes de alimentaci&oacute;n</Link>
+        <Link to="/products?cat=OS">Sistemas Operativos</Link>
+        <Link to="/products?cat=CASE">Torres/Carcasas</Link>
       </div>
     </li>
 
@@ -91,8 +97,10 @@
         aria-expanded="false">
         Audio | Foto | Vídeo
       </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <Link to="/products?cat=TV">Televisores</Link>
+      </div>
     </li>
-
     <li class="nav-item dropdown">
       <a
         class="nav-link dropdown-toggle"
