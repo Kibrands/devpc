@@ -29,7 +29,7 @@
       </div>
       <div class="modal-body">
         <img
-          src="img/favicon.png"
+          src="img/logo-transparente.png"
           width="80"
           class="float-left"
           alt="Logo DevPC" />
