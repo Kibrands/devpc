@@ -54,6 +54,7 @@
         Componentes
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <Link to="/products?cat=MOTHERBOARD">Placas base</Link>
         <Link to="/products?cat=CPU">CPU</Link>
         <Link to="/products?cat=RAM">RAM</Link>
         <Link to="/products?cat=GRAPHIC_BOARD">Tarjetas gr&aacute;ficas</Link>
