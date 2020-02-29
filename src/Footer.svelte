@@ -30,7 +30,7 @@
       <div class="modal-body">
         <img
           src="img/logo-transparente.png"
-          width="80"
+          width="150"
           class="float-left"
           alt="Logo DevPC" />
         <p class="text-right">
