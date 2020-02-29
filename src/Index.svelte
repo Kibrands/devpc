@@ -78,22 +78,24 @@
 
   <div class="row">
     {#each dataResponse as product}
-      {#if product.stock > 0}
-        <Product {product}>
-          <div style="text-align: right">
-            {#if $logged}
-              <Button document={product} type="addToCart" collection="carts" />
-            {/if}
-            {#if !$logged}
-              <button
-                class="btn btn-dark"
-                data-toggle="modal"
-                data-target="#myModal">
-                Añadir al carrito
-              </button>
-            {/if}
-          </div>
-        </Product>
+      {#if product.dto > 10}
+        {#if product.stock > 0}
+          <Product {product}>
+            <div style="text-align: right">
+              {#if $logged}
+                <Button document={product} type="addToCart" collection="carts" />
+              {/if}
+              {#if !$logged}
+                <button
+                  class="btn btn-dark"
+                  data-toggle="modal"
+                  data-target="#myModal">
+                  Añadir al carrito
+                </button>
+              {/if}
+            </div>
+          </Product>
+        {/if}
       {/if}
     {/each}
   </div>
