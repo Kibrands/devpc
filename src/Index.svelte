@@ -26,6 +26,7 @@
   async function add() {
     const response = await fetch(URL.products);
     const data = await response.json();
+    $jsonData = [];
     $jsonData = await data;
   }
 </script>

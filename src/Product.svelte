@@ -3,10 +3,13 @@
 
   export let product = {};
 
-  let pvp =
-    product.dto > 0
-      ? (product.price * (100 - product.dto)) / 100
-      : product.price;
+  function getPVP(product) {
+    let pvp =
+      product.dto > 0
+        ? (product.price * (100 - product.dto)) / 100
+        : product.price;
+    return pvp;
+  }
 </script>
 
 <style>
@@ -48,7 +51,9 @@
     <div class="col-4">
       <b>Precio:</b>
       <br />
-      <span id="pvp" class="ml-1">{parseFloat(pvp).toFixed(2)}</span>
+      {#await getPVP(product) then pvp}
+        <span id="pvp" class="ml-1">{parseFloat(pvp).toFixed(2)}</span>
+      {/await}
     </div>
     <div class="col-2">
       {#if product.dto > 0}
