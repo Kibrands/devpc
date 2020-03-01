@@ -261,7 +261,7 @@
       Object.values(document.password).every(x => x !== undefined && x != "")
     ) {
       fetch(url, {
-        method: "GET",
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(document)
       })
