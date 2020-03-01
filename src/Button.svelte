@@ -346,8 +346,7 @@
     ) {
       fetch(url, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(id) //NO VA
+        headers: { "Content-Type": "application/json" }
       })
         .then(res => res.json())
         .then(data => {
