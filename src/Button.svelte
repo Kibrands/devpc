@@ -8,6 +8,7 @@
     cartData,
     visibility,
     logged,
+    show,
     user,
     loginData,
     cartCount,
@@ -24,9 +25,11 @@
   let handler = () => {};
   let classes = "";
   let url = "";
+  let id = writable({});
 
   function toggle() {
     logged.set(!$logged);
+    show.set(!$show);
     if ($visibility == "hidden") visibility.set("");
     else visibility.set("hidden");
   }
@@ -39,6 +42,7 @@
   }
 
   const URL = getContext("URL");
+
   onMount(() => {
     switch (type) {
       case "addToCart":
@@ -65,6 +69,14 @@
       case "purchase":
         handler = purchase;
         classes = "btn btn-dark my-0 ml-4 btn-purchase";
+        break;
+      case "forgot":
+        handler = forgot;
+        classes = "btn btn-dark my-0 ml-4 btn-forgot";
+        break;
+      case "newPass":
+        handler = newPass;
+        classes = "btn btn-dark my-0 ml-4 btn-newPass";
         break;
       default:
     }
@@ -94,12 +106,10 @@
     });
     $cartCount = await count;
   }
-
   async function getProductById(productId) {
     const productResponse = await fetch(URL.products + productId);
     return await productResponse.json();
   }
-
   async function deleteForEachCart(element) {
     let productToPut = {};
     productToPut = await getProductById(element.productId);
@@ -135,7 +145,6 @@
       return false;
     }
   }
-
   function deleteCartsAndUpdateProducts() {
     let allOk = true;
     $carts.forEach(element => {
@@ -146,7 +155,6 @@
     });
     return allOk;
   }
-
   async function purchase() {
     let purchase = {};
     purchase.cart = $carts;
@@ -189,7 +197,6 @@
       });
     }
   }
-
   function deleteCart() {
     fetch(url + "user/" + document.userId + "/product/" + document.productId, {
       method: "DELETE"
@@ -204,7 +211,6 @@
     $carts = fetch(URL.carts + "user/" + user.data._id);
     getCount();
   }
-
   function addToCart() {
     $cartData = { userId: user.data._id, productId: document._id, amount: 1 };
     if (
@@ -237,7 +243,6 @@
       timer: 1500
     });
   }
-
   function register() {
     window.document
       .getElementById("registerForm")
@@ -271,7 +276,6 @@
     }
     getCount();
   }
-
   function login() {
     fetch(URL.users + document.nick, {
       method: "GET"
@@ -301,11 +305,57 @@
         clearData();
       });
   }
-
   function logout() {
     user.data = {};
     toggle();
     window.location.href = "/";
+  }
+
+  function forgot() {
+    fetch(URL.users + document.nick, {
+      method: "GET"
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.nick == document.nick) {
+          user.data = data;
+          toggle();
+          clearData();
+        } else {
+          alert("Datos incorrectos");
+        }
+      })
+      .catch(err => console.log(err));
+  }
+
+  function newPass() {
+    $id = { userId: user.data._id};
+
+    fetch(URL.users, {
+      method: "GET"
+    })
+    window.document
+      .getElementById("passForm")
+      .addEventListener("click", function(event) {
+        event.preventDefault();
+      });
+    document.password = md5(document.password);
+    if (
+      Object.keys(document.password).length > 1 &&
+      Object.values(document.password).every(x => x !== undefined && x != "")
+    ) {
+      fetch(url, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(id) //NO VA
+      })
+        .then(res => res.json())
+        .then(data => {
+          $jsonData = [...$jsonData, data];
+          window.location.href = "/";
+        })
+        .catch(err => console.log(err));
+    }
   }
 </script>
 
@@ -333,6 +383,15 @@
   .btn-purchase::after {
     content: "Realizar compra";
   }
+
+  .btn-forgot::after {
+    content: "Next";
+  }
+
+  .btn-newPass::after {
+    content: "Next";
+  }
+
 </style>
 
 <button
