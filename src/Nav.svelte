@@ -90,9 +90,11 @@
           <div class="form-group">
             <div class="clearfix">
               <label>Password</label>
-              <Link to="/forgot">
-                <small class="pull-right text-muted">Forgot?</small>
-              </Link>
+              <a href="#forgot" data-dismiss="modal">
+                <Link to="/forgot">
+                  <small class="pull-right text-muted">Forgot?</small>
+                </Link>
+              </a>
             </div>
             <input
               bind:value={loginData.password}

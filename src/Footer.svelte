@@ -5,6 +5,7 @@
 <style>
   #footer {
     z-index: 3;
+    height: 50px;
   }
 </style>
 

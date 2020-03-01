@@ -29,9 +29,12 @@
 
   function toggle() {
     logged.set(!$logged);
-    show.set(!$show);
     if ($visibility == "hidden") visibility.set("");
     else visibility.set("hidden");
+  }
+
+  function toggleShowForForgot() {
+    show.set(!$show);
   }
 
   function clearData() {
@@ -39,6 +42,8 @@
     loginData.password = "";
     window.document.getElementById("loginNick").value = "";
     window.document.getElementById("loginPassword").value = "";
+    window.document.getElementById("pass1").value = "";
+    window.document.getElementById("pass2").value = "";
   }
 
   const URL = getContext("URL");
@@ -318,43 +323,91 @@
       .then(res => res.json())
       .then(data => {
         if (data.nick == document.nick) {
-          user.data = data;
-          toggle();
-          clearData();
+          user.data = {};
+          user.data.nick = data.nick;
+          user.data.email = data.email;
+          toggleShowForForgot();
         } else {
-          alert("Datos incorrectos");
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Usuario no válido",
+            showConfirmButton: true
+          });
         }
       })
-      .catch(err => console.log(err));
+      .catch(err =>
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Error",
+          showConfirmButton: true
+        })
+      );
   }
 
   function newPass() {
-    $id = { userId: user.data._id};
+    let finalPassword;
 
-    fetch(URL.users, {
-      method: "GET"
-    })
-    window.document
-      .getElementById("passForm")
-      .addEventListener("click", function(event) {
-        event.preventDefault();
+    if (document[0] == document[1]) {
+      finalPassword = document[0];
+      if (finalPassword.length < 8) {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Error, la contraseña es demasiado corta",
+          showConfirmButton: true
+        });
+      } else {
+        window.document
+          .getElementById("passForm")
+          .addEventListener("click", function(event) {
+            event.preventDefault();
+          });
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title:
+            "Te hemos enviado un correo de confirmación a " +
+            getCensuredEmail(),
+          showConfirmButton: true
+        });
+        toggleShowForForgot();
+        clearData();
+      }
+    } else {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Error, las contraseñas no coinciden",
+        showConfirmButton: true
       });
-    document.password = md5(document.password);
-    if (
-      Object.keys(document.password).length > 1 &&
-      Object.values(document.password).every(x => x !== undefined && x != "")
-    ) {
-      fetch(url, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" }
-      })
-        .then(res => res.json())
-        .then(data => {
-          $jsonData = [...$jsonData, data];
-          window.location.href = "/";
-        })
-        .catch(err => console.log(err));
     }
+  }
+
+  function getCensuredEmail() {
+    let censuredEmail = "";
+    let finalIncognit = [];
+    finalIncognit[0] = "";
+    finalIncognit[1] = "";
+    let email = user.data.email;
+    let fragmentedEmail = email.split("@");
+    let fragmentedDomain = fragmentedEmail[1].split(".");
+    let incognit = fragmentedEmail[0].substring(1);
+    for (let i = 0; i < incognit.length; i++) {
+      finalIncognit[0] += "*";
+    }
+    for (let i = 0; i < fragmentedDomain[0].length; i++) {
+      finalIncognit[1] += "*";
+    }
+    censuredEmail =
+      fragmentedEmail[0].charAt(0) +
+      finalIncognit[0] +
+      "@" +
+      finalIncognit[1] +
+      "." +
+      fragmentedDomain[1];
+    return censuredEmail;
   }
 </script>
 
@@ -390,7 +443,6 @@
   .btn-newPass::after {
     content: "Next";
   }
-
 </style>
 
 <button

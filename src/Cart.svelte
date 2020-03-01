@@ -58,7 +58,7 @@
   }
 </script>
 
-<div class="container">
+<div class="container mb-4">
   <br />
   {#if $logged}
     <div class="row">
