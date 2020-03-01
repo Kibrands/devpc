@@ -18,11 +18,8 @@
   },
   "dependencies": {
     "sirv-cli": "^0.4.4",
-<<<<<<< HEAD
     "svelte-routing": "^1.4.1",
-=======
     "svelte-routing": "^1.4.0",
->>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
     "svelte-simple-modal": "^0.3.0",
     "sweetalert2": "^9.8.2"
   }
