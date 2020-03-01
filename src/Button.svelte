@@ -103,9 +103,9 @@
   async function deleteForEachCart(element) {
     let productToPut = {};
     productToPut = await getProductById(element.productId);
-    if (productToPut.stock >= element.amount) {
+    if ((await productToPut.stock) >= element.amount) {
       productToPut.stock -= element.amount;
-      fetch(URL.products + element.productId, {
+      await fetch(URL.products + element.productId, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(productToPut)
@@ -117,7 +117,7 @@
           showConfirmButton: true
         });
       });
-      fetch(
+      await fetch(
         URL.carts + "user/" + element.userId + "/product/" + element.productId,
         {
           method: "DELETE"
