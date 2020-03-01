@@ -39,6 +39,7 @@
   }
 
   const URL = getContext("URL");
+  
   onMount(() => {
     switch (type) {
       case "addToCart":
@@ -64,7 +65,15 @@
         break;
       case "purchase":
         handler = purchase;
-        classes = "btn btn-dark my-0 ml-4 btn-purchase"
+        classes = "btn btn-dark my-0 ml-4 btn-purchase";
+        break;
+      case "forgot":
+        handler = forgot;
+        classes = "btn btn-dark my-0 ml-4 btn-forgot";
+        break;
+      case "newPass":
+        handler = newPass;
+        classes = "btn btn-dark my-0 ml-4 btn-newPass";
         break;
       default:
     }
@@ -101,7 +110,7 @@
     purchase.payment = document;
     purchase.paid = true;
     console.log(purchase);
-    
+
     /*
     fetch(url, {
         method: "POST",
@@ -206,6 +215,48 @@
     toggle();
     window.location.href = "/";
   }
+
+  function forgot() {
+    fetch(URL.users + document.nick, {
+      method: "GET"
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.nick == document.nick) {
+          user.data = data;
+          toggle();
+          clearData();
+        } else {
+          alert("Datos incorrectos");
+        }
+      })
+      .catch(err => console.log(err));
+  }
+
+  function newPass() {
+    window.document
+      .getElementById("passForm")
+      .addEventListener("click", function(event) {
+        event.preventDefault();
+      });
+    document.password = md5(document.password);
+    if (
+      Object.keys(document.password).length > 1 &&
+      Object.values(document.password).every(x => x !== undefined && x != "")
+    ) {
+      fetch(url, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(document)
+      })
+        .then(res => res.json())
+        .then(data => {
+          $jsonData = [...$jsonData, data];
+          window.location.href = "/";
+        })
+        .catch(err => console.log(err));
+    }
+  }
 </script>
 
 <style>
@@ -231,6 +282,14 @@
 
   .btn-purchase::after {
     content: "Realizar compra";
+  }
+
+  .btn-forgot::after {
+    content: "Next";
+  }
+
+  .btn-newPass::after {
+    content: "Next";
   }
 </style>
 
