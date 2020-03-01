@@ -1,7 +1,7 @@
 <script>
   import { Link } from "svelte-routing";
   import Button from "./Button.svelte";
-  import { visibility, show, loginData, user } from "./store.js";
+  import { visibility, show, user } from "./store.js";
 </script>
 
 <nav aria-label="breadcrumb">
@@ -24,15 +24,15 @@
     <div class="form-group">
       <label>Username</label>
       <input
-        bind:value={loginData.nick}
-        id="loginNick"
+        bind:value={user.nick}
+        id="userNick"
         type="text"
         class="form-control"
         required="required" />
     </div>
     <div class="modal-footer">
       <Button
-        document={loginData}
+        document={user}
         type="forgot"
         collection="users"
         dataDismiss="modal" />
@@ -46,13 +46,8 @@
         <div class="form-row">
           <div class="col">
             <b>
-      <input
-        bind:value={loginData.nick}
-        id="loginNick"
-        type="text"
-        class="form-control"
-        required="required" />
-      </b>
+            {user.nick}
+            </b>
           </div>
         </div>
       </div>
@@ -89,7 +84,7 @@
     </div>
     <div class="modal-footer">
       <Button
-        document={loginData}
+        document={user}
         type="newPass"
         collection="users"
         dataDismiss="modal" />

@@ -25,6 +25,7 @@
   let handler = () => {};
   let classes = "";
   let url = "";
+  let id = writable({});
 
   function toggle() {
     logged.set(!$logged);
@@ -326,24 +327,13 @@
       })
       .catch(err => console.log(err));
   }
-/*
-    function obtainUser() {
-    fetch(URL.users + document.nick, {
-      method: "GET"
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.nick == document.nick) {
-          user.data = data;
-          toggle();
-          clearData();
-    window.document.getElementById("loginNick").value = "";
-    window.document.getElementById("loginPassword").value = "";
-        }
-  }
-  */
 
   function newPass() {
+    $id = { userId: user.data._id};
+
+    fetch(URL.users, {
+      method: "GET"
+    })
     window.document
       .getElementById("passForm")
       .addEventListener("click", function(event) {
@@ -357,7 +347,7 @@
       fetch(url, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(document)
+        body: JSON.stringify(id) //NO VA
       })
         .then(res => res.json())
         .then(data => {
