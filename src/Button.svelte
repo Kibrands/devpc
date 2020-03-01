@@ -67,7 +67,6 @@
         handler = purchase;
         classes = "btn btn-dark my-0 ml-4 btn-purchase";
         break;
-<<<<<<< HEAD
       case "forgot":
         handler = forgot;
         classes = "btn btn-dark my-0 ml-4 btn-forgot";
@@ -76,8 +75,6 @@
         handler = newPass;
         classes = "btn btn-dark my-0 ml-4 btn-newPass";
         break;
-=======
->>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
       default:
     }
     switch (collection) {
@@ -161,12 +158,10 @@
   }
 
   async function purchase() {
->>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
     let purchase = {};
     purchase.cart = $carts;
     purchase.payment = document;
     purchase.paid = true;
-<<<<<<< HEAD
     console.log(purchase);
 
     /*
@@ -185,7 +180,6 @@
         .then(data => {})
         .catch(err => console.log(err));
     */
-=======
         .then(data => {
           Swal.fire({
             position: "center",
@@ -214,7 +208,6 @@
         showConfirmButton: true
       });
     }
->>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
   }
 
   function deleteCart() {
@@ -228,11 +221,8 @@
       showConfirmButton: false,
       timer: 1500
     });
-<<<<<<< HEAD
     $carts = fetch(URL.carts);
-=======
     $carts = fetch(URL.carts + "user/" + user.data._id);
->>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
     getCount();
   }
 
@@ -249,9 +239,7 @@
       })
         .then(res => res.json())
         .then(data => {})
-<<<<<<< HEAD
         .catch(err => console.log(err));
-=======
         .catch(err => {
           Swal.fire({
             position: "center",
@@ -261,7 +249,6 @@
             timer: 1500
           });
         });
->>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
     }
     getCount();
     Swal.fire({
@@ -426,7 +413,6 @@
   .btn-purchase::after {
     content: "Realizar compra";
   }
-<<<<<<< HEAD
 
   .btn-forgot::after {
     content: "Next";
@@ -435,8 +421,7 @@
   .btn-newPass::after {
     content: "Next";
   }
-=======
->>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
+
 </style>
 
 <button
