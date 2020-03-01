@@ -53,13 +53,9 @@
     <div class="col-4">
       <b>Precio:</b>
       <br />
-<<<<<<< HEAD
-      <span id="pvp" class="ml-1">{pvp}</span>
-=======
       {#await getPVP(product) then pvp}
         <span id="pvp" class="ml-1">{parseFloat(pvp).toFixed(2)}</span>
       {/await}
->>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
     </div>
     <div class="col-2">
       {#if product.dto > 0}

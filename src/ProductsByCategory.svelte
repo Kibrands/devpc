@@ -24,10 +24,7 @@
   async function add() {
     const response = await fetch(URL.products + "category/" + category);
     const data = await response.json();
-<<<<<<< HEAD
-=======
     $jsonData = [];
->>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
     $jsonData = await data;
   }
 

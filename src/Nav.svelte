@@ -90,7 +90,7 @@
           <div class="form-group">
             <div class="clearfix">
               <label>Password</label>
-              <Link to="/forgot" >
+              <Link to="/forgot">
                 <small class="pull-right text-muted">Forgot?</small>
               </Link>
             </div>
