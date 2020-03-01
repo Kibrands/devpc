@@ -39,7 +39,7 @@
   }
 
   const URL = getContext("URL");
-  
+
   onMount(() => {
     switch (type) {
       case "addToCart":
@@ -232,6 +232,22 @@
       })
       .catch(err => console.log(err));
   }
+/*
+    function obtainUser() {
+    fetch(URL.users + document.nick, {
+      method: "GET"
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.nick == document.nick) {
+          user.data = data;
+          toggle();
+          clearData();
+    window.document.getElementById("loginNick").value = "";
+    window.document.getElementById("loginPassword").value = "";
+        }
+  }
+  */
 
   function newPass() {
     window.document
@@ -245,7 +261,7 @@
       Object.values(document.password).every(x => x !== undefined && x != "")
     ) {
       fetch(url, {
-        method: "PUT",
+        method: "GET",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(document)
       })
