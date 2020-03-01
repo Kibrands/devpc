@@ -21,8 +21,8 @@
 </style>
 
 <nav class="navbar-light bg-dark px-5 py-0">
-  <div class="row">
-    <div class="col">
+  <div class="row justify-content-between">
+    <div class="col-10 col-md-6">
       <Link to="/">
         <div class="py-0">
           <img
@@ -33,7 +33,7 @@
         </div>
       </Link>
     </div>
-    <div class="col">
+    <div class="col-4 col-md-2">
       <div class="form-inline float-right mt-0 mt-md-0 pt-4">
         {#if $logged}
           <Link to="/cart">
