@@ -8,6 +8,7 @@
     cartData,
     visibility,
     logged,
+    show,
     user,
     loginData,
     cartCount,
@@ -27,6 +28,7 @@
 
   function toggle() {
     logged.set(!$logged);
+    show.set(!$show);
     if ($visibility == "hidden") visibility.set("");
     else visibility.set("hidden");
   }
