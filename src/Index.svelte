@@ -26,6 +26,10 @@
   async function add() {
     const response = await fetch(URL.products);
     const data = await response.json();
+<<<<<<< HEAD
+=======
+    $jsonData = [];
+>>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
     $jsonData = await data;
   }
 </script>
@@ -77,6 +81,7 @@
 
   <div class="row">
     {#each dataResponse as product}
+<<<<<<< HEAD
       {#if product.stock > 0}
         <Product {product}>
           <div style="text-align: right">
@@ -93,6 +98,26 @@
             {/if}
           </div>
         </Product>
+=======
+      {#if product.dto > 10}
+        {#if product.stock > 0}
+          <Product {product}>
+            <div style="text-align: right">
+              {#if $logged}
+                <Button document={product} type="addToCart" collection="carts" />
+              {/if}
+              {#if !$logged}
+                <button
+                  class="btn btn-dark"
+                  data-toggle="modal"
+                  data-target="#myModal">
+                  Añadir al carrito
+                </button>
+              {/if}
+            </div>
+          </Product>
+        {/if}
+>>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
       {/if}
     {/each}
   </div>

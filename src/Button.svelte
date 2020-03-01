@@ -67,6 +67,7 @@
         handler = purchase;
         classes = "btn btn-dark my-0 ml-4 btn-purchase";
         break;
+<<<<<<< HEAD
       case "forgot":
         handler = forgot;
         classes = "btn btn-dark my-0 ml-4 btn-forgot";
@@ -75,6 +76,8 @@
         handler = newPass;
         classes = "btn btn-dark my-0 ml-4 btn-newPass";
         break;
+=======
+>>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
       default:
     }
     switch (collection) {
@@ -105,22 +108,113 @@
   }
 
   function purchase() {
+  async function getProductById(productId) {
+    const productResponse = await fetch(URL.products + productId);
+    return await productResponse.json();
+  }
+
+  async function deleteForEachCart(element) {
+    let productToPut = {};
+    productToPut = await getProductById(element.productId);
+    if ((await productToPut.stock) >= element.amount) {
+      productToPut.stock -= element.amount;
+      await fetch(URL.products + element.productId, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(productToPut)
+      }).catch(err => {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Error",
+          showConfirmButton: true
+        });
+      });
+      await fetch(
+        URL.carts + "user/" + element.userId + "/product/" + element.productId,
+        {
+          method: "DELETE"
+        }
+      ).catch(err => {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Error",
+          showConfirmButton: true
+        });
+      });
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function deleteCartsAndUpdateProducts() {
+    let allOk = true;
+    $carts.forEach(element => {
+      allOk = deleteForEachCart(element);
+      if (!allOk) {
+        return false;
+      }
+    });
+    return allOk;
+  }
+
+  async function purchase() {
+>>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
     let purchase = {};
     purchase.cart = $carts;
     purchase.payment = document;
     purchase.paid = true;
+<<<<<<< HEAD
     console.log(purchase);
 
     /*
     fetch(url, {
+=======
+    let allOk = await deleteCartsAndUpdateProducts();
+    if (allOk) {
+      await fetch(url, {
+>>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(purchase)
       })
         .then(res => res.json())
+<<<<<<< HEAD
         .then(data => {})
         .catch(err => console.log(err));
     */
+=======
+        .then(data => {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Compra realizada correctamente",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          $carts = fetch(URL.carts + "user/" + user.data._id);
+          getCount();
+        })
+        .catch(err => {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Error en la compra",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        });
+    } else {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Por favor, haga los cambios necesarios",
+        showConfirmButton: true
+      });
+    }
+>>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
   }
 
   function deleteCart() {
@@ -134,7 +228,11 @@
       showConfirmButton: false,
       timer: 1500
     });
+<<<<<<< HEAD
     $carts = fetch(URL.carts);
+=======
+    $carts = fetch(URL.carts + "user/" + user.data._id);
+>>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
     getCount();
   }
 
@@ -151,7 +249,19 @@
       })
         .then(res => res.json())
         .then(data => {})
+<<<<<<< HEAD
         .catch(err => console.log(err));
+=======
+        .catch(err => {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Error añadiendo el producto",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        });
+>>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
     }
     getCount();
     Swal.fire({
@@ -184,7 +294,15 @@
           $jsonData = [...$jsonData, data];
           window.location.href = "/";
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Error en el registro",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        });
     }
     getCount();
   }
@@ -207,7 +325,16 @@
           alert("Datos incorrectos");
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Error al acceder",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        clearData();
+      });
   }
 
   function logout() {
@@ -299,6 +426,7 @@
   .btn-purchase::after {
     content: "Realizar compra";
   }
+<<<<<<< HEAD
 
   .btn-forgot::after {
     content: "Next";
@@ -307,6 +435,8 @@
   .btn-newPass::after {
     content: "Next";
   }
+=======
+>>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
 </style>
 
 <button

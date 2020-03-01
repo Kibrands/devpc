@@ -29,8 +29,8 @@
       </div>
       <div class="modal-body">
         <img
-          src="img/favicon.png"
-          width="80"
+          src="img/logo-transparente.png"
+          width="150"
           class="float-left"
           alt="Logo DevPC" />
         <p class="text-right">
