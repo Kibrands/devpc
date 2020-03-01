@@ -41,11 +41,8 @@
   }
 
   onMount(async () => {
-<<<<<<< HEAD
-=======
     if (!$logged) user.data._id = "";
     totalAmount = 0;
->>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
     const response = await fetch(URL.carts + "user/" + user.data._id);
     const data = await response.json();
     await prepare(data);
@@ -55,10 +52,7 @@
     const resp = await fetch(URL.products + cart.productId);
     const data = await resp.json();
     product[i] = await data;
-<<<<<<< HEAD
-=======
     if (i == 0) totalAmount = 0;
->>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
     totalAmount += product[i].price * cart.amount;
     return product[i];
   }
@@ -66,7 +60,6 @@
 
 <div class="container">
   <br />
-<<<<<<< HEAD
   <div class="row">
     {#each $carts as cart, i}
       {#await getProductTitle(cart, i) then prod}
@@ -121,7 +114,6 @@
     </h3>
     <br />
   </div>
-=======
   {#if $logged}
     <div class="row">
       {#each $carts as cart, i}
@@ -181,5 +173,4 @@
   {#if !$logged}
     <h2>Oops, inicia sesión para entrar aquí.</h2>
   {/if}
->>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
 </div>

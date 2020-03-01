@@ -103,13 +103,10 @@
     });
     $cartCount = await count;
   }
-
-  function purchase() {
   async function getProductById(productId) {
     const productResponse = await fetch(URL.products + productId);
     return await productResponse.json();
   }
-
   async function deleteForEachCart(element) {
     let productToPut = {};
     productToPut = await getProductById(element.productId);
@@ -145,7 +142,6 @@
       return false;
     }
   }
-
   function deleteCartsAndUpdateProducts() {
     let allOk = true;
     $carts.forEach(element => {
@@ -156,30 +152,19 @@
     });
     return allOk;
   }
-
   async function purchase() {
     let purchase = {};
     purchase.cart = $carts;
     purchase.payment = document;
     purchase.paid = true;
-    console.log(purchase);
-
-    /*
-    fetch(url, {
-=======
     let allOk = await deleteCartsAndUpdateProducts();
     if (allOk) {
       await fetch(url, {
->>>>>>> d926ea069abadf6b85dee7dcb67e490b08b7a047
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(purchase)
       })
         .then(res => res.json())
-<<<<<<< HEAD
-        .then(data => {})
-        .catch(err => console.log(err));
-    */
         .then(data => {
           Swal.fire({
             position: "center",
@@ -209,7 +194,6 @@
       });
     }
   }
-
   function deleteCart() {
     fetch(url + "user/" + document.userId + "/product/" + document.productId, {
       method: "DELETE"
@@ -221,11 +205,9 @@
       showConfirmButton: false,
       timer: 1500
     });
-    $carts = fetch(URL.carts);
     $carts = fetch(URL.carts + "user/" + user.data._id);
     getCount();
   }
-
   function addToCart() {
     $cartData = { userId: user.data._id, productId: document._id, amount: 1 };
     if (
@@ -239,7 +221,6 @@
       })
         .then(res => res.json())
         .then(data => {})
-        .catch(err => console.log(err));
         .catch(err => {
           Swal.fire({
             position: "center",
@@ -259,7 +240,6 @@
       timer: 1500
     });
   }
-
   function register() {
     window.document
       .getElementById("registerForm")
@@ -293,7 +273,6 @@
     }
     getCount();
   }
-
   function login() {
     fetch(URL.users + document.nick, {
       method: "GET"
@@ -323,7 +302,6 @@
         clearData();
       });
   }
-
   function logout() {
     user.data = {};
     toggle();
