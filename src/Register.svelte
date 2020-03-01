@@ -7,6 +7,13 @@
   let user = {};
 </script>
 
+<style>
+  .breadcrumb {
+    border-radius: 0;
+    padding: 0.9rem 7.5rem;
+  }
+</style>
+
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><Link to="/"><i class="fas fa-home"></i> Inicio</Link></li>
