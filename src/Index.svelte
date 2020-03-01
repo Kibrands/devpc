@@ -1,192 +1,36 @@
 <script>
-  import { Link } from "svelte-routing";
   import { onMount, getContext } from "svelte";
   import { jsonData, logged } from "./store.js";
 
-  import Search from "./Search.svelte";
   import Product from "./Product.svelte";
   import Button from "./Button.svelte";
+  import Search from "./Search.svelte";
+  import ProductsNav from "./ProductsNav.svelte";
+  import Modal from "svelte-simple-modal";
+  
 
   const URL = getContext("URL");
   let product = {};
+  let cart = [];
   let search = "";
-  let category = "";
-
-  function setCategory(cat) {
-    category = cat;
-  }
-
-  // TODO -> Al pulsar la opción del sidebar, debe coger la categoría
-  let findUrl = category == "" ? "" : "category/" + category;
-
-  onMount(async () => {
-    const response = await fetch(URL.products + findUrl);
-    const data = await response.json();
-    $jsonData = data;
-  });
 
   $: regex = new RegExp(search, "i");
   $: dataResponse = search
     ? $jsonData.filter(item => regex.test(item.title))
     : $jsonData;
+
+  onMount(async () => {
+    add();
+  });
+
+  async function add() {
+    const response = await fetch(URL.products);
+    const data = await response.json();
+    $jsonData = await data;
+  }
 </script>
 
-<style>
-  .breadcrumb {
-    border-radius: 0;
-    padding: 0.9rem 7.5rem;
-  }
-
-  #navbarDropdown {
-    color: white;
-  }
-
-  .dropdown-item {
-    color: black;
-    padding: 20px;
-  }
-
-  .nav-item {
-    padding: auto 100px auto 100px;
-  }
-</style>
-
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Ordenadores
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="javascript:{setCategory('LAPTOP')}">Portátiles</a>
-        <a class="dropdown-item" href="#">Sobremesa</a>
-      </div>
-    </li>
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Componentes
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">CPU</a>
-        <a class="dropdown-item" href="#">RAM</a>
-
-      </div>
-
-    </li>
-
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Smartphones
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">Samsung</a>
-        <a class="dropdown-item" href="#">Nokia</a>
-      </div>
-
-    </li>
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Audio | Foto | Vídeo
-      </a>
-
-    </li>
-
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Periféricos
-      </a>
-
-    </li>
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Televisores
-      </a>
-    </li>
-
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Tablets
-      </a>
-    </li>
-
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Consolas
-      </a>
-    </li>
-
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Impresoras
-      </a>
-    </li>
-
-  </ol>
-</nav>
-
+<ProductsNav />
 <div class="container">
   <div
     id="carouselExampleIndicators"
@@ -233,21 +77,23 @@
 
   <div class="row">
     {#each dataResponse as product}
-      <Product {product}>
-        <div style="text-align: right">
-          {#if $logged}
-            <Button document={product} type="addToCart" collection="products" />
-          {/if}
-          {#if !$logged}
-            <button
-              class="btn btn-dark"
-              data-toggle="modal"
-              data-target="#myModal">
-              Añadir al carrito
-            </button>
-          {/if}
-        </div>
-      </Product>
+      {#if product.stock > 0}
+        <Product {product}>
+          <div style="text-align: right">
+            {#if $logged}
+              <Button document={product} type="addToCart" collection="carts" />
+            {/if}
+            {#if !$logged}
+              <button
+                class="btn btn-dark"
+                data-toggle="modal"
+                data-target="#myModal">
+                Añadir al carrito
+              </button>
+            {/if}
+          </div>
+        </Product>
+      {/if}
     {/each}
   </div>
 </div>

@@ -1,7 +1,18 @@
 <script>
   import { onMount, getContext } from "svelte";
   import { writable } from "svelte/store";
-  import { jsonData, cartData, visibility, logged, user, loginData } from "./store.js";
+  import Swal from "sweetalert2";
+
+  import {
+    jsonData,
+    cartData,
+    visibility,
+    logged,
+    user,
+    loginData,
+    cartCount,
+    carts
+  } from "./store.js";
   import { md5 } from "./md5.js";
 
   export let type = "addToCart";
@@ -47,6 +58,14 @@
         handler = logout;
         classes = "btn btn-outline-light my-0 ml-2 my-sm-0 btn-logout";
         break;
+      case "deleteCart":
+        handler = deleteCart;
+        classes = "btn btn-dark my-0 ml-2 my-sm-0 btn-deleteCart";
+        break;
+      case "purchase":
+        handler = purchase;
+        classes = "btn btn-dark my-0 ml-4 btn-purchase"
+        break;
       default:
     }
     switch (collection) {
@@ -66,23 +85,73 @@
     }
   });
 
+  async function getCount() {
+    let count = 0;
+    const response = await fetch(URL.carts + "user/" + user.data._id);
+    const data = await response.json();
+    data.forEach(element => {
+      ++count;
+    });
+    $cartCount = await count;
+  }
+
+  function purchase() {
+    let purchase = {};
+    purchase.cart = $carts;
+    purchase.payment = document;
+    purchase.paid = true;
+    console.log(purchase);
+    
+    /*
+    fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(purchase)
+      })
+        .then(res => res.json())
+        .then(data => {})
+        .catch(err => console.log(err));
+    */
+  }
+
+  function deleteCart() {
+    fetch(url + "user/" + document.userId + "/product/" + document.productId, {
+      method: "DELETE"
+    });
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Producto eliminado del carro",
+      showConfirmButton: false,
+      timer: 1500
+    });
+    $carts = fetch(URL.carts);
+    getCount();
+  }
+
   function addToCart() {
-    console.log(document);
+    $cartData = { userId: user.data._id, productId: document._id, amount: 1 };
     if (
-      Object.keys(document).length > 1 &&
-      Object.values(document).every(x => x !== undefined && x != "")
+      Object.keys($cartData).length > 1 &&
+      Object.values($cartData).every(x => x !== undefined && x != "")
     ) {
       fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(document)
+        body: JSON.stringify($cartData)
       })
         .then(res => res.json())
-        .then(data => {
-          $cartData = [...$cartData, data];
-        })
+        .then(data => {})
         .catch(err => console.log(err));
     }
+    getCount();
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Se ha añadido al carro",
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 
   function register() {
@@ -108,6 +177,7 @@
         })
         .catch(err => console.log(err));
     }
+    getCount();
   }
 
   function login() {
@@ -121,6 +191,7 @@
           data.password == md5(document.password)
         ) {
           user.data = data;
+          getCount();
           toggle();
           clearData();
         } else {
@@ -152,6 +223,14 @@
 
   .btn-logout::after {
     content: "Logout";
+  }
+
+  .btn-deleteCart::after {
+    content: "Eliminar";
+  }
+
+  .btn-purchase::after {
+    content: "Realizar compra";
   }
 </style>
 
