@@ -68,11 +68,11 @@ button:focus {
 .ir-arriba{
 	display:none;
 	background-repeat:no-repeat;
-	font-size:20px;
+	font-size:30px;
 	color:black;
 	cursor:pointer;
 	position:fixed;
-	bottom:85px;
+	bottom:65px;
 	right:10px;
 	z-index:2;
   }

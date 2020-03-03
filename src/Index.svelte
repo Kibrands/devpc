@@ -35,8 +35,7 @@
 <div class="container">
   <a class="ir-arriba" href="#" title="Volver arriba">
     <span class="fa-stack">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-arrow-up fa-stack-1x fa-inverse"></i>
+      <i class="fas fa-arrow-up"></i>
     </span>
   </a>
   <div
