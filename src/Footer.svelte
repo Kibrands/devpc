@@ -7,6 +7,14 @@
     z-index: 3;
     height: 50px;
   }
+
+  #contacto {
+    color: rgb(0, 161, 224) !important;
+  }
+
+  :global(#contacto a) {
+    color: rgb(0, 161, 224) !important;
+  }
 </style>
 
 <div

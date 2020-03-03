@@ -23,7 +23,7 @@
     display: block;
   }
 
-  @media all and (max-width: 750px) {
+  @media all and (max-width: 991px) {
     #categoriesNav ol {
       padding: 0.9rem 0.5rem;
       text-align: left;
@@ -32,8 +32,8 @@
   }
 </style>
 
-<nav id="categoriesNav" aria-label="breadcrumb">
-  <ol class="breadcrumb">
+<nav id="categoriesNav" aria-label="breadcrumb navbar-expand-lg">
+  <ol id="collapseBreadcrumb" class="breadcrumb">
     <li class="nav-item dropdown">
       <a
         class="nav-link dropdown-toggle"
