@@ -78,13 +78,6 @@
           <div style="text-align: right">
             {#if $logged}
               <Button document={product} type="addToCart" collection="carts" />
-              <dialog class="my-modal" open>
-                <h3>👋</h3>
-                <p>Se ha añadido al carro.</p>
-                <div class="actions">
-                  <button class="small close-modal-btn">Cerrar</button>
-                </div>
-              </dialog>
             {/if}
             {#if !$logged}
               <button
