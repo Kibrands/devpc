@@ -58,13 +58,19 @@
   }
 </script>
 
+<div class="alert alert-success" role="alert">
+  Por compras superiores a <a href="#" class="alert-link">30€</a> el env&iacute;o sale gratis.
+</div>
+
 <div class="container mb-4">
   <br />
   {#if $logged}
     <div class="row">
       {#each $carts as cart, i}
         {#await getProductTitle(cart, i) then prod}
-          <div class="card col-6" style="background-color: rgb(236, 236, 236); border: none">
+          <div
+            class="card col-12 mb-3"
+            style="background-color: rgb(236, 236, 236); border: none">
             <div class="row">
               <div class="col-2">
                 <img
@@ -73,7 +79,7 @@
                   src={prod.image}
                   alt={prod.title} />
               </div>
-              <div class="col-5">
+              <div class="col-6">
                 <h5>{prod.title}</h5>
                 <label for="amountSelected">Cantidad seleccionada</label>
                 <input type="number" bind:value={$carts[i].amount} />
@@ -104,31 +110,42 @@
         {/await}
       {/each}
       <hr />
-      <div class="card col-6">
-        <label style="text-align:center" for="payment">
-          M&eacute;todo de pago
-        </label>
-        <input
-          id="payment"
-          type="text"
-          class="form-control"
-          bind:value={payment}
-          required />
-        <br />
-        <h3 class="w-100">
-          Total: {parseFloat(totalAmount).toFixed(2)} &euro;
-        </h3>
-        <br />
-        <Button type="purchase" collection="purchases" document={payment} />
-      </div>
     </div>
-    <hr>
-    <div class="card col-6" style="background-color: rgb(236, 236, 236); border: none">
-      <div class="card-header" style="background-color: rgb(236, 236, 236)">
-        <h4>Métodos de pago posibles</h4>
+    <hr />
+    <div class="row">
+      <div
+        class="card col-6"
+        style="background-color: rgb(236, 236, 236); border: none">
+        <div class="card-header" style="background-color: rgb(236, 236, 236)">
+          <h4>Métodos de pago posibles</h4>
+        </div>
+        <div class="card-body">
+          <img
+            src="img/metodosPago.png"
+            width="200px"
+            alt="M&eacute;todos de pago" />
+        </div>
       </div>
-      <div class="card-body">
-        <img src="img/metodosPago.png" width="400px" alt="M&eacute;todos de pago">
+      <div
+        class="card col-6"
+        style="background-color: rgb(236, 236, 236); border: none">
+        <div class="card-header" style="background-color: rgb(236, 236, 236)">
+          <h4 style="text-align:center;">Pedido</h4>
+        </div>
+        <div class="card-body">
+          <input
+            id="payment"
+            type="text"
+            class="form-control"
+            bind:value={payment}
+            required />
+          <br />
+          <h3 class="w-100">
+            Total: {parseFloat(totalAmount).toFixed(2)} &euro;
+          </h3>
+          <br />
+          <Button type="purchase" collection="purchases" document={payment} />
+        </div>
       </div>
     </div>
   {/if}
