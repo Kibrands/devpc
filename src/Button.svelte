@@ -42,6 +42,9 @@
     loginData.password = "";
     window.document.getElementById("loginNick").value = "";
     window.document.getElementById("loginPassword").value = "";
+  }
+
+  function clearPasswds() {
     window.document.getElementById("pass1").value = "";
     window.document.getElementById("pass2").value = "";
   }
@@ -374,6 +377,7 @@
         });
         toggleShowForForgot();
         clearData();
+        clearPasswds();
       }
     } else {
       Swal.fire({

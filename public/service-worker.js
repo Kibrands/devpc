@@ -4,6 +4,7 @@ const CACHE_NAME = "devpc-v1";
 // Archivos necesarios para el funcionamiento offline
 const CACHE_ASSETS = [
     "/",
+    "/offline.html",
     "/index.html",
     "/global.css",
     "/build/bundle.css",

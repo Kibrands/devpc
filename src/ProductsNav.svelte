@@ -22,9 +22,17 @@
     color: black;
     display: block;
   }
+
+  @media all and (max-width: 750px) {
+    #categoriesNav ol {
+      padding: 0.9rem 0.5rem;
+      text-align: left;
+      display: block;
+    }
+  }
 </style>
 
-<nav aria-label="breadcrumb">
+<nav id="categoriesNav" aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="nav-item dropdown">
       <a

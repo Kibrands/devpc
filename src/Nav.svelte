@@ -16,13 +16,46 @@
     font-size: 0.6em;
     border-radius: 50%;
     margin-left: -10px;
-    margin-top: -20px;
+    height: 15px;
+    margin-top: inherit;
+  }
+
+  @media all and (max-width: 750px) {
+    #mainNav {
+      padding: 0.5rem !important;
+    }
+  }
+
+  @media all and (max-width: 991px) {
+    #collapsableMenu {
+      display: contents;
+    }
+    #collapsableMenu div div ul {
+      display: flex;
+    }
+    #collapsableMenu div div ul button {
+      margin-top: 10px !important;
+    }
+    #collapsableMenu div div {
+      display: contents;
+    }
+    #collapsableMenu div {
+      padding: 2%;
+      margin-left: 5%;
+    }
+  }
+
+  #collpaseNavbarButton {
+    padding: 10px 10px;
+    height: fit-content;
   }
 </style>
 
-<nav class="navbar-light bg-dark px-5 py-0">
-  <div class="row justify-content-between">
-    <div class="col-10 col-md-6">
+<nav id="mainNav" class="navbar navbar-expand-lg navbar-dark bg-dark px-5 py-0">
+  <div
+    id="logoDiv"
+    class="row justify-content-between w-100 align-items-center">
+    <div class="col-8 col-md-8">
       <Link to="/">
         <div class="py-0">
           <img
@@ -33,33 +66,50 @@
         </div>
       </Link>
     </div>
-    <div class="col-4 col-md-2">
-      <div class="form-inline float-right mt-0 mt-md-0 pt-4">
-        {#if $logged}
-          <Link to="/cart">
-            <button class="btn btn-dark cart" style="visibility: {$visibility}">
-              <i class="fas fa-shopping-cart inversed" />
-            </button>
-            <div class="cartCount">
-              &nbsp;
-              <span>{$cartCount}</span>
-              &nbsp;
-            </div>
-          </Link>
-          <Button type="logout" collection="users" />
-        {/if}
-        {#if !$logged}
-          <Link to="/register">
-            <div class="btn btn-dark pull-right">Registrarse</div>
-          </Link>
-          <button
-            class="btn btn-outline-light my-0 ml-2 my-sm-0"
-            id="logIn"
-            data-toggle="modal"
-            data-target="#myModal">
-            Log in
-          </button>
-        {/if}
+    <button
+      id="collpaseNavbarButton"
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarLogin"
+      aria-controls="navbarLogin"
+      aria-expanded="false"
+      aria-label="Abrir menú">
+      <span class="navbar-toggler-icon" />
+    </button>
+    <div id="collapsableMenu" class="text-right">
+      <div class="collapse navbar-collapse" id="navbarLogin">
+        <div class="form-inline float-right mt-0 mt-md-0">
+          <ul class="navbar-nav mr-auto">
+            {#if $logged}
+              <Link to="/cart">
+                <button
+                  class="btn btn-dark cart"
+                  style="visibility: {$visibility}">
+                  <i class="fas fa-shopping-cart inversed" />
+                </button>
+                <div class="cartCount">
+                  &nbsp;
+                  <span>{$cartCount}</span>
+                  &nbsp;
+                </div>
+              </Link>
+              <Button type="logout" collection="users" />
+            {/if}
+            {#if !$logged}
+              <Link to="/register">
+                <div class="btn btn-dark pull-right">Registrarse</div>
+              </Link>
+              <button
+                class="btn btn-outline-light my-0 ml-2 my-sm-0"
+                id="logIn"
+                data-toggle="modal"
+                data-target="#myModal">
+                Log in
+              </button>
+            {/if}
+          </ul>
+        </div>
       </div>
     </div>
   </div>
