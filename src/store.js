@@ -9,3 +9,4 @@ export const cartData = writable({});
 export let cartCount = writable(0);
 export let user = writable({});
 export let loginData = writable({});
+export let progress = writable(0);

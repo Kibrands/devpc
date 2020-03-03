@@ -1,7 +1,7 @@
 <script>
   import { Link } from "svelte-routing";
   import Button from "./Button.svelte";
-  import { visibility, show, user } from "./store.js";
+  import { visibility, show, user, progress } from "./store.js";
 
   let userToPut = { nick: "" };
 
@@ -30,7 +30,15 @@
 </nav>
 <div class="container">
   <h2>Restablecimiento de contraseña</h2>
-
+  <div class="progress">
+    <div
+      class="progress-bar progress-bar-striped bg-info"
+      role="progressbar"
+      style="width: {$progress}%"
+      aria-valuenow="{$progress}"
+      aria-valuemin="0"
+      aria-valuemax="100" />
+  </div>
   {#if !$show}
     <div class="form-group">
       <label>Username</label>
@@ -42,10 +50,7 @@
         required="required" />
     </div>
     <div class="modal-footer">
-      <Button
-        document={userToPut}
-        type="forgot"
-        collection="users" />
+      <Button document={userToPut} type="forgot" collection="users" />
     </div>
   {/if}
   {#if $show}

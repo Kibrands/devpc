@@ -12,7 +12,8 @@
     user,
     loginData,
     cartCount,
-    carts
+    carts,
+    progress
   } from "./store.js";
   import { md5 } from "./md5.js";
 
@@ -330,6 +331,7 @@
           user.data.nick = data.nick;
           user.data.email = data.email;
           toggleShowForForgot();
+          $progress = 50;
         } else {
           Swal.fire({
             position: "center",
@@ -362,6 +364,7 @@
           showConfirmButton: true
         });
       } else {
+        $progress = 75;
         window.document
           .getElementById("passForm")
           .addEventListener("click", function(event) {
@@ -378,6 +381,7 @@
         toggleShowForForgot();
         clearData();
         clearPasswds();
+        $progress = 100;
       }
     } else {
       Swal.fire({
