@@ -6,7 +6,7 @@
   #categoriesNav {
     border-radius: 0;
     margin-bottom: 10px;
-    padding-left: 150px;
+    padding-left: 20%;
   }
 
   #navbarDropdown {
@@ -17,6 +17,11 @@
     color: black;
     padding: 20px;
   }
+
+a.dropdown-item {
+  background-color: white;
+}
+
 
   :global(.dropdown-menu a) {
     padding: auto 100px auto 100px !important;
@@ -33,284 +38,219 @@
   }
 </style>
 
-<!--<nav id="categoriesNav" aria-label="breadcrumb navbar-expand-lg" >
-  <ol id="collapseBreadcrumb" class="breadcrumb">
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#dropdown-button"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Ordenadores
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link to="/products?cat=LAPTOP">Port&aacute;tiles</Link>
-        <Link to="/products?cat=PC">Sobremesa</Link>
-      </div>
-    </li>
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#dropdown-button"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Componentes
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link to="/products?cat=MOTHERBOARD">Placas base</Link>
-        <Link to="/products?cat=CPU">CPU</Link>
-        <Link to="/products?cat=RAM">RAM</Link>
-        <Link to="/products?cat=GRAPHIC_BOARD">Tarjetas gr&aacute;ficas</Link>
-        <Link to="/products?cat=HDD">Discos Duros</Link>
-        <Link to="/products?cat=SSD">Memorias SSD</Link>
-        <Link to="/products?cat=M2">Memorias M.2</Link>
-        <Link to="/products?cat=POWER">Fuentes de alimentaci&oacute;n</Link>
-        <Link to="/products?cat=OS">Sistemas Operativos</Link>
-        <Link to="/products?cat=CASE">Torres/Carcasas</Link>
-      </div>
-    </li>
-
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#dropdown-button"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Smartphones
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link to="/products?cat=SAMSUNG">SAMSUNG</Link>
-        <Link to="/products?cat=NOKIA">NOKIA</Link>
-        <Link to="/products?cat=IPHONE">IPHONE</Link>
-        <Link to="/products?cat=XIAOMI">XIAOMI</Link>
-        <Link to="/products?cat=SMARTPHONE_ACC">Accesorios</Link>
-      </div>
-    </li>
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#dropdown-button"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Audio | Foto | Vídeo
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link to="/products?cat=TV">Televisores</Link>
-        <Link to="/products?cat=CAMERA">C&aacute;maras</Link>
-      </div>
-    </li>
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#dropdown-button"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Periféricos
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link to="/products?cat=SCREEN">Monitores</Link>
-        <Link to="/products?cat=KEYBOARD">Teclados</Link>
-        <Link to="/products?cat=MOUSE">Ratones</Link>
-        <Link to="/products?cat=SPEAKERS">Altavoces</Link>
-        <Link to="/products?cat=HEADPHONES">Auriculares/Cascos</Link>
-        <Link to="/products?cat=GAMING_CHAIR">Sillas Gaming</Link>
-        <Link to="/products?cat=MICROPHONE">Micr&oacute;fonos</Link>
-        <Link to="/products?cat=USB_MEMORY">Memoria USB</Link>
-      </div>
-    </li>
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#dropdown-button"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Tablets
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link to="/products?cat=SAMSUNG_TABLET">SAMSUNG</Link>
-        <Link to="/products?cat=HUAWEI_TABLET">HUAWEI</Link>
-        <Link to="/products?cat=LENOVO_TABLET">LENOVO</Link>
-      </div>
-    </li>
-
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#dropdown-button"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Consolas
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link to="/products?cat=PS4">PS4</Link>
-        <Link to="/products?cat=NINTENDO_SWITCH">Nintendo Switch</Link>
-        <Link to="/products?cat=XBOX_ONE">XBox One</Link>
-        <Link to="/products?cat=DS_3DS">DS/3DS</Link>
-      </div>
-    </li>
-  </ol>
-</nav>-->
-
-<nav id="categoriesNav" class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(46, 115, 131, 0.651);">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+<nav
+  id="categoriesNav"
+  class="navbar navbar-expand-lg navbar-light "
+  style="background: linear-gradient(180deg, #154854, rgba(46, 115, 131, 0.651);">
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon" />
   </button>
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-      <a
-        class="mx-4 nav-link dropdown-toggle"
-        href="#dropdown-button"
-        id="navbarDropdown"
-        role="button"
+    <div class="dropdown">
+      <button
+        class="btn text-white dropdown-toggle"
+        type="button"
+        id="ordenadores"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false">
         Ordenadores
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link to="/products?cat=LAPTOP">Port&aacute;tiles</Link>
-        <Link to="/products?cat=PC">Sobremesa</Link>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="ordenadores">
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=LAPTOP">Port&aacute;tiles</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=PC">Sobremesa</Link>
+        </a>
       </div>
-    </li>
-      <li class="nav-item dropdown">
-      <a
-        class="mx-4 nav-link dropdown-toggle"
-        href="#dropdown-button"
-        id="navbarDropdown"
-        role="button"
+    </div>
+
+    <div class="dropdown">
+      <button
+        class="btn text-white dropdown-toggle"
+        type="button"
+        id="componentes"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false">
         Componentes
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link to="/products?cat=MOTHERBOARD">Placas base</Link>
-        <Link to="/products?cat=CPU">CPU</Link>
-        <Link to="/products?cat=RAM">RAM</Link>
-        <Link to="/products?cat=GRAPHIC_BOARD">Tarjetas gr&aacute;ficas</Link>
-        <Link to="/products?cat=HDD">Discos Duros</Link>
-        <Link to="/products?cat=SSD">Memorias SSD</Link>
-        <Link to="/products?cat=M2">Memorias M.2</Link>
-        <Link to="/products?cat=POWER">Fuentes de alimentaci&oacute;n</Link>
-        <Link to="/products?cat=OS">Sistemas Operativos</Link>
-        <Link to="/products?cat=CASE">Torres/Carcasas</Link>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="ordenadores">
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=MOTHERBOARD">Placas base</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=CPU">CPU</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=RAM">RAM</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=GRAPHIC_BOARD">Tarjetas gr&aacute;ficas</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=HDD">Discos Duros</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=SSD">Memorias SSD</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=M2">Memorias M.2</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=POWER">Fuentes de alimentaci&oacute;n</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=OS">Sistemas Operativos</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=CASE">Torres/Carcasas</Link>
+        </a>
       </div>
-    </li>
-      <li class="nav-item dropdown">
-      <a
-        class="mx-4 nav-link dropdown-toggle"
-        href="#dropdown-button"
-        id="navbarDropdown"
-        role="button"
+    </div>
+
+    <div class="dropdown">
+      <button
+        class="btn text-white dropdown-toggle"
+        type="button"
+        id="smartphones"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false">
         Smartphones
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link to="/products?cat=SAMSUNG">SAMSUNG</Link>
-        <Link to="/products?cat=NOKIA">NOKIA</Link>
-        <Link to="/products?cat=IPHONE">IPHONE</Link>
-        <Link to="/products?cat=XIAOMI">XIAOMI</Link>
-        <Link to="/products?cat=SMARTPHONE_ACC">Accesorios</Link>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="smartphones">
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=SAMSUNG">Samsung</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=NOKIA">Nokia</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=IPHONE">Iphone</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=XIAOMI">Xiaomi</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=SMARTPHONE_ACC">Accesorios</Link>
+        </a>
       </div>
-    </li>
-<li class="nav-item dropdown">
-      <a
-        class="mx-4 nav-link dropdown-toggle"
-        href="#dropdown-button"
-        id="navbarDropdown"
-        role="button"
+    </div>
+
+    <div class="dropdown">
+      <button
+        class="btn text-white dropdown-toggle"
+        type="button"
+        id="audio"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false">
         Audio | Foto | Vídeo
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link to="/products?cat=TV">Televisores</Link>
-        <Link to="/products?cat=CAMERA">C&aacute;maras</Link>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="audio">
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=TV">Televisores</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=CAMERA">C&aacute;maras</Link>
+        </a>
       </div>
-    </li>
-    <li class="nav-item dropdown">
-      <a
-        class="mx-4 nav-link dropdown-toggle"
-        href="#dropdown-button"
-        id="navbarDropdown"
-        role="button"
+    </div>
+
+    <div class="dropdown">
+      <button
+        class="btn text-white dropdown-toggle"
+        type="button"
+        id="perifericos"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false">
-        Periféricos
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link to="/products?cat=SCREEN">Monitores</Link>
-        <Link to="/products?cat=KEYBOARD">Teclados</Link>
-        <Link to="/products?cat=MOUSE">Ratones</Link>
-        <Link to="/products?cat=SPEAKERS">Altavoces</Link>
-        <Link to="/products?cat=HEADPHONES">Auriculares/Cascos</Link>
-        <Link to="/products?cat=GAMING_CHAIR">Sillas Gaming</Link>
-        <Link to="/products?cat=MICROPHONE">Micr&oacute;fonos</Link>
-        <Link to="/products?cat=USB_MEMORY">Memoria USB</Link>
+        Perif&eacute;ricos
+      </button>
+      <div class="dropdown-menu" aria-labelledby="perifericos">
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=SCREEN">Monitores</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=KEYBOARD">Teclados</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=MOUSE">Ratones</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=SPEAKERS">Altavoces</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=HEADPHONES">Auriculares/Cascos</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=GAMING_CHAIR">Sillas Gaming</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=MICROPHONE">Micr&oacute;fonos</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=USB_MEMORY">Memoria USB</Link>
+        </a>
       </div>
-    </li>
-    <li class="nav-item dropdown">
-      <a
-        class="mx-4 nav-link dropdown-toggle"
-        href="#dropdown-button"
-        id="navbarDropdown"
-        role="button"
+    </div>
+
+    <div class="dropdown">
+      <button
+        class="btn text-white dropdown-toggle"
+        type="button"
+        id="tablets"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false">
         Tablets
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link to="/products?cat=SAMSUNG_TABLET">SAMSUNG</Link>
-        <Link to="/products?cat=HUAWEI_TABLET">HUAWEI</Link>
-        <Link to="/products?cat=LENOVO_TABLET">LENOVO</Link>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="tablets">
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=SAMSUNG_TABLET">Samsung</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=HUAWEI_TABLET">Huawei</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=LENOVO_TABLET">Lenovo</Link>
+        </a>
       </div>
-    </li>
-    <li class="nav-item dropdown">
-      <a
-        class="mx-4 nav-link dropdown-toggle"
-        href="#dropdown-button"
-        id="navbarDropdown"
-        role="button"
+    </div>
+
+    <div class="dropdown">
+      <button
+        class="btn text-white dropdown-toggle"
+        type="button"
+        id="consolas"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false">
         Consolas
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link to="/products?cat=PS4">PS4</Link>
-        <Link to="/products?cat=NINTENDO_SWITCH">Nintendo Switch</Link>
-        <Link to="/products?cat=XBOX_ONE">XBox One</Link>
-        <Link to="/products?cat=DS_3DS">DS/3DS</Link>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="consolas">
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=PS4">PS4</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=NINTENDO_SWITCH">Nintendo Switch</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=XBOX_ONE">XBox One</Link>
+        </a>
+        <a class="dropdown-item" href="#">
+          <Link to="/products?cat=DS_3DS">DS/3DS</Link>
+        </a>
       </div>
-    </li>
-    </ul>
+    </div>
   </div>
 </nav>
