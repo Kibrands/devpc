@@ -1,6 +1,8 @@
 <script>
   import { Link } from "svelte-routing";
   import { user, logged } from "./store.js";
+  import { onMount } from "svelte";
+  import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
 
   let contactForm = {};
   function getEmail() {
@@ -10,18 +12,11 @@
       return "";
     }
   }
+
+  // TO DO -> con mapboxgl, crear el mapa dentro de onMount
 </script>
 
 <style>
-  .mapouter {
-    position: relative;
-    text-align: right;
-  }
-  .gmap_canvas {
-    overflow: hidden;
-    background: none !important;
-    border: 2px solid #387b8a;
-  }
   .breadcrumb {
     border-radius: 0;
   }
@@ -131,18 +126,7 @@
       </form>
     </div>
     <div class="col-xl-7">
-      <div class="mapouter">
-        <div class="gmap_canvas">
-          <iframe
-            title=""
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.096526959414!2d-5.084053649238877!3d37.552789532573975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd12caea8e08f2bb%3A0x4dd34539e2aa7b93!2sI.E.S.%20Luis%20V%C3%A9lez%20de%20Guevara!5e0!3m2!1ses!2ses!4v1582707816838!5m2!1ses!2ses"
-            width="600"
-            height="450"
-            frameborder="0"
-            style="border:0;"
-            allowfullscreen="" />
-        </div>
-      </div>
+      <div id="map" />
     </div>
   </div>
 </div>

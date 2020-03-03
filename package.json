@@ -17,6 +17,7 @@
     "svelte-forms": "^1.2.0"
   },
   "dependencies": {
+    "mapbox-gl": "^1.8.1",
     "sirv-cli": "^0.4.4",
     "svelte-routing": "^1.4.0",
     "svelte-simple-modal": "^0.3.0",
