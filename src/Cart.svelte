@@ -64,7 +64,7 @@
     <div class="row">
       {#each $carts as cart, i}
         {#await getProductTitle(cart, i) then prod}
-          <div class="card col-12">
+          <div class="card col-6" style="background-color: rgb(236, 236, 236); border: none">
             <div class="row">
               <div class="col-2">
                 <img
@@ -73,13 +73,14 @@
                   src={prod.image}
                   alt={prod.title} />
               </div>
-              <div class="col-10">
+              <div class="col-5">
                 <h5>{prod.title}</h5>
                 <label for="amountSelected">Cantidad seleccionada</label>
                 <input type="number" bind:value={$carts[i].amount} />
                 {#if cart.amount > prod.stock}
                   <div class="alert alert-danger" role="alert">
-                    Actualmente no tenemos más de {prod.stock} unidad{#if prod.stock > 1}es{/if}
+                    Actualmente no tenemos más de {prod.stock} unidad
+                    {#if prod.stock > 1}es{/if}
                     de este producto . Por favor, elija un número igual o
                     inferior.
                   </div>
@@ -91,7 +92,9 @@
                 {#if cart.amount > 1}
                   <p>
                     Precio x {cart.amount}:
-                    <b>{parseFloat(prod.price * cart.amount).toFixed(2)} &euro;</b>
+                    <b>
+                      {parseFloat(prod.price * cart.amount).toFixed(2)} &euro;
+                    </b>
                   </p>
                 {/if}
                 <Button type="deleteCart" document={cart} collection="carts" />
@@ -101,19 +104,32 @@
         {/await}
       {/each}
       <hr />
-      <label for="payment">M&eacute;todo de pago</label>
-      <input
-        id="payment"
-        type="text"
-        class="form-control"
-        bind:value={payment}
-        required />
-      <br />
-      <h3 class="w-100">
-        Total: {parseFloat(totalAmount).toFixed(2)} &euro;
+      <div class="card col-6">
+        <label style="text-align:center" for="payment">
+          M&eacute;todo de pago
+        </label>
+        <input
+          id="payment"
+          type="text"
+          class="form-control"
+          bind:value={payment}
+          required />
+        <br />
+        <h3 class="w-100">
+          Total: {parseFloat(totalAmount).toFixed(2)} &euro;
+        </h3>
+        <br />
         <Button type="purchase" collection="purchases" document={payment} />
-      </h3>
-      <br />
+      </div>
+    </div>
+    <hr>
+    <div class="card col-6" style="background-color: rgb(236, 236, 236); border: none">
+      <div class="card-header" style="background-color: rgb(236, 236, 236)">
+        <h4>Métodos de pago posibles</h4>
+      </div>
+      <div class="card-body">
+        <img src="img/metodosPago.png" width="400px" alt="M&eacute;todos de pago">
+      </div>
     </div>
   {/if}
   {#if !$logged}
