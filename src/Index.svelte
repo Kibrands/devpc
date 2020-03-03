@@ -33,6 +33,12 @@
 
 <ProductsNav />
 <div class="container">
+  <a class="ir-arriba" href="#" title="Volver arriba">
+    <span class="fa-stack">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-arrow-up fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
   <div
     id="carouselExampleIndicators"
     class="carousel slide"
@@ -75,7 +81,6 @@
   </div>
   <br />
   <Search bind:search />
-
   <div class="row">
     {#each dataResponse as product}
       {#if product.dto > 10}

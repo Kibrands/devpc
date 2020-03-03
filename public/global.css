@@ -64,3 +64,15 @@ button:not(:disabled):active {
 button:focus {
 	border-color: #666;
 }
+
+.ir-arriba{
+	display:none;
+	background-repeat:no-repeat;
+	font-size:20px;
+	color:black;
+	cursor:pointer;
+	position:fixed;
+	bottom:85px;
+	right:10px;
+	z-index:2;
+  }
