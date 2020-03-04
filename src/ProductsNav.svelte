@@ -44,13 +44,15 @@ a.dropdown-item {
   style="background: linear-gradient(180deg, #154854, rgba(46, 115, 131, 0.651);">
   <button
     class="navbar-toggler"
+    style="margin: 0 auto auto 12px"
     type="button"
     data-toggle="collapse"
     data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent"
     aria-expanded="false"
     aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon" />
+    <span class="nav-link dropdown-toggle">Categorías</span>
+
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <div class="dropdown">

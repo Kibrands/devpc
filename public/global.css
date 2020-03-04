@@ -69,10 +69,10 @@ button:focus {
 	display:none;
 	background-repeat:no-repeat;
 	font-size:30px;
-	color:black;
+	color: deepskyblue;
 	cursor:pointer;
 	position:fixed;
 	bottom:65px;
-	right:10px;
+	right:1px;
 	z-index:2;
   }
