@@ -98,14 +98,18 @@
             {/if}
             {#if !$logged}
               <Link to="/register">
-                <div class="btn btn-dark pull-right">Registrarse</div>
+                <button
+                  class="btn btn-outline-light my-0 ml-2 my-sm-0"
+                  id="registrarse">
+                  Registrarse
+                </button>
               </Link>
               <button
                 class="btn btn-outline-light my-0 ml-2 my-sm-0"
                 id="logIn"
                 data-toggle="modal"
                 data-target="#myModal">
-                Log in
+                Iniciar Sesión
               </button>
             {/if}
           </ul>

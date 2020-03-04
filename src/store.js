@@ -16,9 +16,8 @@ $(document).ready(function(){ //Hacia arriba
 });
 
 function irArriba(){
-  $('.ir-arriba').click(function(){ $('body,html').animate({ scrollTop:'0px' },0); });
+  $('.ir-arriba').click(function(){ $('body,html').animate({ scrollTop:'100%' },2500); });
   $(window).scroll(function(){
-    if($(this).scrollTop() > 0){ $('.ir-arriba').slideDown(900); }else{ $('.ir-arriba').slideUp(50); }
+    if($(this).scrollTop() > 0){ $('.ir-arriba').slideDown(900); }else{ $('.ir-arriba').slideUp(10); }
   });
-  $('.ir-abajo').click(function(){ $('body,html').animate({ scrollTop:'500px' },1000); });
 }
