@@ -132,15 +132,10 @@
     </div>
     <div class="col-xl-7">
       <div id="map">
-      <svelte:head>
-	      <script defer async
-	      src="https://console.cloud.google.com/google/maps-apis/apis/maps-backend.googleapis.com/metrics?project=prime-formula-270208">
-      	</script>
-      </svelte:head>
-{ #if ready }
-<Map></Map>
-{ /if }
-</div>
+	{ #if ready }
+	  <Map></Map>
+	{ /if }
       </div>
+    </div>
   </div>
 </div>
