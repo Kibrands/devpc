@@ -7,7 +7,6 @@
   import Search from "./Search.svelte";
   import ProductsNav from "./ProductsNav.svelte";
   import Modal from "svelte-simple-modal";
-  
 
   const URL = getContext("URL");
   let product = {};
@@ -32,12 +31,10 @@
 </script>
 
 <ProductsNav />
+<a href="javascript:" id="return-to-top">
+  <i class="fas fa-chevron-up" />
+</a>
 <div class="container">
-  <a class="ir-arriba" href="#" title="Volver arriba">
-    <span class="fa-stack">
-      <i class="fas fa-arrow-up"></i>
-    </span>
-  </a>
   <div
     id="carouselExampleIndicators"
     class="carousel slide"
@@ -87,7 +84,10 @@
           <Product {product}>
             <div style="text-align: right">
               {#if $logged}
-                <Button document={product} type="addToCart" collection="carts" />
+                <Button
+                  document={product}
+                  type="addToCart"
+                  collection="carts" />
               {/if}
               {#if !$logged}
                 <button
