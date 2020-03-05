@@ -3,6 +3,8 @@
   import { user, logged } from "./store.js";
   import { onMount } from "svelte";
   import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
+	import Map from './Map.svelte';
+  export let ready;
 
   let contactForm = {};
   function getEmail() {
@@ -24,6 +26,9 @@
   #subtitulo {
     text-align: center;
   }
+  :global(body) {
+  	padding: 0;
+}
 </style>
 
 <nav aria-label="breadcrumb">
@@ -126,7 +131,16 @@
       </form>
     </div>
     <div class="col-xl-7">
-      <div id="map" />
-    </div>
+      <div id="map">
+      <svelte:head>
+	      <script defer async
+	      src="https://console.cloud.google.com/google/maps-apis/apis/maps-backend.googleapis.com/metrics?project=prime-formula-270208">
+      	</script>
+      </svelte:head>
+{ #if ready }
+<Map></Map>
+{ /if }
+</div>
+      </div>
   </div>
 </div>
