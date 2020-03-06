@@ -70,7 +70,12 @@ self.addEventListener('fetch', function(e) {
 
     // Hacemos petición a la red y si no está disponible obtenemos desde la caché
     e.respondWith(fetch(e.request)
-        .catch(function() { return caches.match(e.request) }));
+        .catch(function() {
+            return caches.open(CACHE_NAME)
+                .then((cache) => {
+                    return cache.match('/offline.html');
+                });
+        }));
 
 });
 
