@@ -65,28 +65,15 @@ self.addEventListener("activate", function(e) {
 
 // FETCH
 // Hacemos peticiones a recursos.
-self.addEventListener("fetch", function(e) {
+self.addEventListener('fetch', function(e) {
     console.log("[Service Worker] * Fetch.");
 
-    // if (e.request.mode !== 'navigate') {
-    //   // Not a page navigation, bail.
-    //   return;
-    // }
-    if (
-        e.request.url.indexOf("/auth/") !== -1 ||
-        e.request.url.indexOf("/perfil") !== -1
-    ) {
-        return false;
-    }
+    // Hacemos petición a la red y si no está disponible obtenemos desde la caché
+    e.respondWith(fetch(e.request)
+        .catch(function() { return caches.match(e.request) }));
 
-    e.respondWith(
-        fetch(e.request).catch(() => {
-            return caches.open(CACHE_NAME).then(cache => {
-                return cache.match("/offline.html");
-            });
-        })
-    );
 });
+
 
 // PUSH
 self.addEventListener("push", function(e) {
