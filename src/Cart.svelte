@@ -58,13 +58,12 @@
   }
 </script>
 
-<div class="alert alert-success" role="alert">
-  Por compras superiores a <a href="#" class="alert-link">30€</a> el env&iacute;o sale gratis.
-</div>
-
 <div class="container mb-4">
   <br />
   {#if $logged}
+    <div class="alert alert-success" role="alert">
+    Por compras superiores a <a href="#" class="alert-link">30€</a> el env&iacute;o sale gratis.
+    </div>
     <div class="row">
       {#each $carts as cart, i}
         {#await getProductTitle(cart, i) then prod}
